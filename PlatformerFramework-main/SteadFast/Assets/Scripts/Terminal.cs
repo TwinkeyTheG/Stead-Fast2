@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.Events;
 /*********************************
  * Conner Vergara
  * 3/4/2021
@@ -10,8 +11,10 @@ using TMPro;
 
 public class Terminal : MonoBehaviour
 {
-    TMP_Text myOrder;
-    public int OrderNumber = 0, PackageNum;
+    //updates order info
+    public static UnityEvent UpdateOrder = new UnityEvent();
+    public TMP_Text myOrder;
+    public int OrderNumber = 1, PackageNum = 1;
     private static int customers = 4;
     //structure for orders
     /*public struct Orders
@@ -29,9 +32,6 @@ public class Terminal : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        myOrder = GetComponent<TMP_Text>();
-        OrderNumber = 1;
-        PackageNum = 1;
         /*if (begin == true)
         {   
             //populate the array with 0 for each box type
@@ -58,14 +58,19 @@ public class Terminal : MonoBehaviour
     {
         
     }
+    private void OrderText()
+    {
+        myOrder.text = "House: " + OrderNumber + "\n" +
+            "Packages: " + PackageNum;
+    }
 
     //A function for the player to interact with the terminal.
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Terminal"))
+        if (collision.gameObject.CompareTag("Player"))
         {
-            myOrder.text = "House: " + OrderNumber + "\n" +
-                "Packages: " + PackageNum + "\n";
+            OrderText();
+            UpdateOrder.AddListener(OrderText);
 
             /*myOrder.text = "House: " + Type[OrderNumber].houseNum + "\n" +
               "Circle Box(es): " + Type[OrderNumber].BoxCircNum + "\n" +

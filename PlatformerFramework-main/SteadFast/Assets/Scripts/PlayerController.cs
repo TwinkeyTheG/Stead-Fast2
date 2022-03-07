@@ -12,8 +12,11 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D))]
 public class PlayerController : MonoBehaviour
 {
+    //Interaction ranges
+    //public BoxCollider2D pickupRange, loadUp;
+
     //other scripts that need to be accessed
-    public DeliverBox Boxes;
+    DeliverBox Boxes;
 
     //speed and movement variables
     public float speed;
@@ -217,12 +220,13 @@ public class PlayerController : MonoBehaviour
         transform.localScale = Scaler;
     }
 
-    private void OnCollisionStay2D(Collision2D collision)
+    private void OnTriggerStay2D(Collider2D collision)
     {
         Box = collision.gameObject;
 
         if (Input.GetKeyDown(KeyCode.E) && collision.gameObject.CompareTag("Box"))
         {
+            print("package recieved");
             /*if (collision.gameObject.CompareTag("BoxTri"))
             {
                 panel.Type[0].BoxTriNum += 1;
@@ -235,18 +239,40 @@ public class PlayerController : MonoBehaviour
             {
                 panel.Type[0].BoxRectNum += 1;
             }*/
-                Destroy(Box);
+            Destroy(Box);
             myAnim.SetBool("HasBox", true);
             HasBox = true;
         }
-    }
-    private void OnTriggerStay2D(Collider2D collision)
-    {
-        if(collision.gameObject.CompareTag("Truck") && Input.GetKeyDown(KeyCode.E))
+        if (collision.gameObject.CompareTag("Truck") && Input.GetKeyDown(KeyCode.E))
         {
             myAnim.SetBool("HasBox", false);
             HasBox = false;
             Boxes.TruckCount++;
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        Box = collision.gameObject;
+
+        if (Input.GetKeyDown(KeyCode.E) && collision.gameObject.CompareTag("Box"))
+        {
+            print("package recieved");
+            /*if (collision.gameObject.CompareTag("BoxTri"))
+            {
+                panel.Type[0].BoxTriNum += 1;
+            }
+            else if (collision.gameObject.CompareTag("BoxCirc"))
+            {
+                panel.Type[0].BoxCircNum += 1;
+            }
+            else if(collision.gameObject.CompareTag("BoxRect"))
+            {
+                panel.Type[0].BoxRectNum += 1;
+            }*/
+            Destroy(Box);
+            myAnim.SetBool("HasBox", true);
+            HasBox = true;
         }
     }
 }

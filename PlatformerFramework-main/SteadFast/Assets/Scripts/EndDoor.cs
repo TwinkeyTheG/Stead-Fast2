@@ -25,7 +25,7 @@ public class EndDoor : MonoBehaviour
 
     private void OnCollisionStay2D(Collision2D collision)
     {
-        if(collision.gameObject.CompareTag("Player") != null)
+        if(collision.gameObject.CompareTag("Player") && Input.GetKeyDown(KeyCode.F))
         {
             SceneManager.LoadScene(LevelToLoad);
         }

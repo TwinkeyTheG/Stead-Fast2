@@ -44,7 +44,7 @@ GameObject:
   - component: {fileID: 8397047256095260026}
   - component: {fileID: 1274165463910818625}
   - component: {fileID: 8397047256095260029}
-  - component: {fileID: 8074006408191412245}
+  - component: {fileID: -6216676716732595992}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -287,8 +287,10 @@ MonoBehaviour:
   ladderDist: 1
   climbSpeed: 50
   RespawnPoint: {x: 0, y: 0, z: 0}
---- !u!60 &8074006408191412245
-PolygonCollider2D:
+  panel: {fileID: 0}
+  terminal: {fileID: 0}
+--- !u!61 &-6216676716732595992
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -300,7 +302,7 @@ PolygonCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.2359536, y: -0.24216294}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -310,51 +312,6 @@ PolygonCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: 0.53999996, y: -2.49}
-      - {x: 0.42999998, y: -2.46}
-      - {x: 0.5, y: -1.22}
-      - {x: 0.53, y: -1.2099999}
-      - {x: 0.55, y: -0.59}
-      - {x: 0.52, y: -0.5}
-      - {x: 0.62, y: 0.19999999}
-      - {x: 0.62, y: 0.93}
-      - {x: 0.55, y: 1.03}
-      - {x: 0.42999998, y: 1.04}
-      - {x: 0.42, y: 1.88}
-      - {x: 0.5, y: 1.88}
-      - {x: 0.52, y: 1.9}
-      - {x: 0.53999996, y: 2.21}
-      - {x: 0.44, y: 2.4099998}
-      - {x: 0.31, y: 2.53}
-      - {x: 0, y: 2.62}
-      - {x: -0.35, y: 2.62}
-      - {x: -0.55, y: 2.52}
-      - {x: -0.76, y: 2.33}
-      - {x: -0.82, y: 2.1}
-      - {x: -1.01, y: 2.03}
-      - {x: -1.06, y: 1.88}
-      - {x: -0.76, y: 1.64}
-      - {x: -0.83, y: 1.61}
-      - {x: -0.84999996, y: 1.48}
-      - {x: -0.42, y: 1.0799999}
-      - {x: -0.71999997, y: 0.64}
-      - {x: -0.84, y: 0.41}
-      - {x: -1.05, y: -0.52}
-      - {x: -0.94, y: -0.71}
-      - {x: -0.84, y: -0.81}
-      - {x: -0.72999996, y: -0.84}
-      - {x: -0.71999997, y: -2.48}
-      - {x: -0.90999997, y: -2.47}
-      - {x: -1.12, y: -2.6599998}
-      - {x: -1.12, y: -3.03}
-      - {x: -1.03, y: -3.12}
-      - {x: 0.12, y: -3.12}
-      - {x: 0.14, y: -3.03}
-      - {x: 0.41, y: -3.04}
-      - {x: 0.53999996, y: -2.9099998}
-    - - {x: -0.17, y: 1.17}
-      - {x: -0.13, y: 1.17}
-      - {x: -0.13, y: 1.13}
-      - {x: -0.17, y: 1.13}
+  serializedVersion: 2
+  m_Size: {x: 0.66259664, y: 5.6673007}
+  m_EdgeRadius: 0

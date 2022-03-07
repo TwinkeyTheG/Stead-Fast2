@@ -44,7 +44,7 @@ SpriteAtlas:
     variantMultiplier: 1
     packables:
     - {fileID: 102900000, guid: 015970736cfa36e4c88054972bb3d2ba, type: 3}
-    totalSpriteSurfaceArea: 3229992
+    totalSpriteSurfaceArea: 3796392
     bindAsDefault: 1
     isAtlasV2: 0
     cachedData: {fileID: 0}
@@ -53,6 +53,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 6abdde103a0096b49a6d93e504feb4eb, type: 3}
   - {fileID: 21300000, guid: 1a691d20975e1274e9049e6496623f3a, type: 3}
   - {fileID: 21300000, guid: 41facaa0dd51b1a4ab8f07d99e20b464, type: 3}
+  - {fileID: 21300000, guid: 35f289b0622691a41925f05b8bdc197e, type: 3}
   - {fileID: 21300000, guid: 87e21c315643abc40925aa0aeec2d4ed, type: 3}
   - {fileID: 21300000, guid: 6b4d9091f5b1fd040bf9d7ff15fd16fc, type: 3}
   - {fileID: 21300000, guid: 8dff84d131cecf840ad589faa082dbf0, type: 3}
@@ -187,6 +188,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: e513cee9989231e44a421d80f1cba0f1, type: 3}
   - {fileID: 21300000, guid: 0be0faf9660913040b9040845cf49286, type: 3}
   - {fileID: 21300000, guid: 58af227a6ecdbbc4aad7c732f6657247, type: 3}
+  - {fileID: 21300000, guid: 5d462b2bc359a104a85993f428f5778a, type: 3}
   - {fileID: 21300000, guid: 8de23f8b37d7ab24ebad910244803070, type: 3}
   - {fileID: 21300000, guid: f80180abdb53ce644bcb58723433ab95, type: 3}
   - {fileID: 21300000, guid: 1bc67dfb1fa87334b89738fd807ba177, type: 3}
@@ -314,6 +316,7 @@ SpriteAtlas:
   - itembox_circle_tile
   - bigbox_bottomleft_tile
   - tallbox__bottom_tile
+  - truck top down view-2.png 1
   - bigbox_uppermiddle_tile
   - bigbox_bottommiddle_tile
   - truck top down view-2.png
@@ -448,6 +451,7 @@ SpriteAtlas:
   - road_upperright_turn_tile
   - shelves_middle_tile
   - road_bottomleft_turn_tile
+  - win_screen_backdrop
   - player -1.png
   - road_bottomright_turn_tile
   - backdrop_neighborhood_initial_des
