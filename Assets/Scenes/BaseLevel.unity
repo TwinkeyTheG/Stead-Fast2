@@ -4931,6 +4931,21 @@ PrefabInstance:
       propertyPath: m_IsTrigger
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1274165463910818625, guid: e32040e6322592942802c17c9ad76122,
+        type: 3}
+      propertyPath: Loop
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1274165463910818625, guid: e32040e6322592942802c17c9ad76122,
+        type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 555e52b32f89786488859c8c6d592c9c, type: 3}
+    - target: {fileID: 1274165463910818625, guid: e32040e6322592942802c17c9ad76122,
+        type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8397047255048113365, guid: e32040e6322592942802c17c9ad76122,
         type: 3}
       propertyPath: m_LocalPosition.y
