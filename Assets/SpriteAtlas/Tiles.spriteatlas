@@ -44,12 +44,16 @@ SpriteAtlas:
     variantMultiplier: 1
     packables:
     - {fileID: 102900000, guid: 015970736cfa36e4c88054972bb3d2ba, type: 3}
-    totalSpriteSurfaceArea: 3796392
+    totalSpriteSurfaceArea: 13626792
     bindAsDefault: 1
     isAtlasV2: 0
     cachedData: {fileID: 0}
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
+  - {fileID: -4798660805697494436, guid: 31d275104b5994549bccfc43d40afc9d, type: 3}
+  - {fileID: 5255097115066879530, guid: 31d275104b5994549bccfc43d40afc9d, type: 3}
+  - {fileID: -2998381803889387890, guid: 31d275104b5994549bccfc43d40afc9d, type: 3}
+  - {fileID: 3160067744350233963, guid: 31d275104b5994549bccfc43d40afc9d, type: 3}
   - {fileID: 21300000, guid: 6abdde103a0096b49a6d93e504feb4eb, type: 3}
   - {fileID: 21300000, guid: 1a691d20975e1274e9049e6496623f3a, type: 3}
   - {fileID: 21300000, guid: 41facaa0dd51b1a4ab8f07d99e20b464, type: 3}
@@ -66,6 +70,11 @@ SpriteAtlas:
   - {fileID: 21300000, guid: d83ad05446f49d84fb28bb7431c401c3, type: 3}
   - {fileID: 21300000, guid: 400459648ca29ec468b0b3f4709b91e7, type: 3}
   - {fileID: 21300000, guid: e88966c4448c5444693d41e7ec8cb701, type: 3}
+  - {fileID: 8184935739919376306, guid: 3d9dbae4946dccd4d80efda374c00880, type: 3}
+  - {fileID: 3325123018235209228, guid: 3d9dbae4946dccd4d80efda374c00880, type: 3}
+  - {fileID: -2163133243896831817, guid: 3d9dbae4946dccd4d80efda374c00880, type: 3}
+  - {fileID: 8874078680544922272, guid: 3d9dbae4946dccd4d80efda374c00880, type: 3}
+  - {fileID: -817027095465427462, guid: 3d9dbae4946dccd4d80efda374c00880, type: 3}
   - {fileID: 21300000, guid: 73c9aec5d973cd9468b6c9f4f9796e8a, type: 3}
   - {fileID: 21300000, guid: 9f9afcd5a0a4c5b4f8ef0a6c2c54ddf1, type: 3}
   - {fileID: 21300000, guid: 611c9026153e8e74aa839ce7ebb2ed4d, type: 3}
@@ -309,10 +318,24 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 45bffa0e0425b8f4082cdc0ebe4662b5, type: 3}
   - {fileID: 21300000, guid: d1f73d2e884616948b477768e018300a, type: 3}
   - {fileID: 21300000, guid: 8fdabd5ecedd2f34fa81c62677341d7f, type: 3}
+  - {fileID: 8142741152169946802, guid: 1ed7e1fe5a7623247972878d367d5a18, type: 3}
+  - {fileID: -2588854069968660296, guid: 1ed7e1fe5a7623247972878d367d5a18, type: 3}
+  - {fileID: -7054475852704862125, guid: 1ed7e1fe5a7623247972878d367d5a18, type: 3}
+  - {fileID: 610715314435470128, guid: 1ed7e1fe5a7623247972878d367d5a18, type: 3}
+  - {fileID: 3002181131009212036, guid: 1ed7e1fe5a7623247972878d367d5a18, type: 3}
+  - {fileID: 1921103269521992846, guid: 1ed7e1fe5a7623247972878d367d5a18, type: 3}
   - {fileID: 21300000, guid: 9448701fdbdfbdd4bb6d7a8e22c982cb, type: 3}
   - {fileID: 21300000, guid: b9c4868f137fe2f42bc544015e0641cb, type: 3}
+  - {fileID: -6396688236067489315, guid: 568d12af1e371f34a9168d7c2b140acc, type: 3}
+  - {fileID: -2459507350991307813, guid: 568d12af1e371f34a9168d7c2b140acc, type: 3}
+  - {fileID: -2675947373105277125, guid: 568d12af1e371f34a9168d7c2b140acc, type: 3}
+  - {fileID: 10244363629482489, guid: 568d12af1e371f34a9168d7c2b140acc, type: 3}
   - {fileID: 21300000, guid: 4f1db8cfba97d3e4f934914c825e0100, type: 3}
   m_PackedSpriteNamesToIndex:
+  - player with a box ANIMATION_1
+  - player with a box ANIMATION_0
+  - player with a box ANIMATION_3
+  - player with a box ANIMATION_2
   - itembox_circle_tile
   - bigbox_bottomleft_tile
   - tallbox__bottom_tile
@@ -329,6 +352,11 @@ SpriteAtlas:
   - house_1_tile
   - itembox_square_tile
   - shelves_left_tile
+  - player jump ANIMATION_4
+  - player jump ANIMATION_3
+  - player jump ANIMATION_2
+  - player jump ANIMATION_1
+  - player jump ANIMATION_0
   - truck-1.png
   - tallbox_middle_tile
   - temp test pic
@@ -572,8 +600,18 @@ SpriteAtlas:
   - tallbox_top_tile
   - road_left_3intersection_tile
   - itembox_triangle_tile
+  - player with a box jumping animation _5
+  - player with a box jumping animation _4
+  - player with a box jumping animation _1
+  - player with a box jumping animation _0
+  - player with a box jumping animation _3
+  - player with a box jumping animation _2
   - Square
   - road_down_3intersection_tile
+  - player ANIMATION_3
+  - player ANIMATION_2
+  - player ANIMATION_1
+  - player ANIMATION_0
   - road_4intersection_tile
   m_RenderDataMap: {}
   m_Tag: Tiles
