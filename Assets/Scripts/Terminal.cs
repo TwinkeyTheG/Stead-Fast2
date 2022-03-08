@@ -11,13 +11,14 @@ using UnityEngine.Events;
 
 public class Terminal : MonoBehaviour
 {
+    //tells whether the UI
     //updates order info
     public static UnityEvent UpdateOrder = new UnityEvent();
     public TMP_Text myOrder;
     public int OrderNumber = 1, PackageNum = 1;
     private static int customers = 4;
     //structure for orders
-    /*public struct Orders
+    public struct Orders
     {
         public int houseNum;
         public int BoxTriNum;
@@ -27,12 +28,12 @@ public class Terminal : MonoBehaviour
     // amount of orders is 6 for now
     public Orders[] Type = new Orders[customers];
 
-    public bool begin = true;*/
+    public bool begin = true;
     
     // Start is called before the first frame update
     void Start()
     {
-        /*if (begin == true)
+        if (begin == true)
         {   
             //populate the array with 0 for each box type
             for (int i = 0; i < customers; i++)
@@ -50,7 +51,7 @@ public class Terminal : MonoBehaviour
                 Type[i].BoxRectNum = Random.Range(0,5);
             }
             begin = false;
-        }*/
+        }
     }
 
     // Update is called once per frame
@@ -60,8 +61,10 @@ public class Terminal : MonoBehaviour
     }
     private void OrderText()
     {
-        myOrder.text = "House: " + OrderNumber + "\n" +
-            "Packages: " + PackageNum;
+        myOrder.text = "House: " + Type[OrderNumber].houseNum + "\n" +
+              "Circle Box(es): " + Type[OrderNumber].BoxCircNum + "\n" +
+               "Triangle Box(es): " + Type[OrderNumber].BoxTriNum + "\n" +
+               "Rectangle Box(es): " + Type[OrderNumber].BoxRectNum + "\n";
     }
 
     //A function for the player to interact with the terminal.
@@ -71,11 +74,6 @@ public class Terminal : MonoBehaviour
         {
             OrderText();
             UpdateOrder.AddListener(OrderText);
-
-            /*myOrder.text = "House: " + Type[OrderNumber].houseNum + "\n" +
-              "Circle Box(es): " + Type[OrderNumber].BoxCircNum + "\n" +
-               "Triangle Box(es): " + Type[OrderNumber].BoxTriNum + "\n" +
-               "Rectangle Box(es): " + Type[OrderNumber].BoxRectNum + "\n";*/
         }
     }
     //Ask Ryan about using a OnTriggerStay2D for this?
