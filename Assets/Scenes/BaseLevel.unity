@@ -2969,6 +2969,7 @@ MonoBehaviour:
   myOrder: {fileID: 697469974}
   OrderNumber: 1
   PackageNum: 1
+  begin: 1
 --- !u!212 &1150265459
 SpriteRenderer:
   m_ObjectHideFlags: 0
