@@ -299,69 +299,25 @@ public class PlayerController : MonoBehaviour
         {
             myAnim.SetBool("HasBox", false);
             HasBox = false;
-            //Boxes.TruckCount++;
             if (HasTriangle == true)
             {
-                Boxes.Triangles++;
+                Triangles++;
                 HasTriangle = false;
             }
             else if (HasRectangle == true)
             {
-                Boxes.Rectangles++;
+                Rectangles++;
                 HasRectangle = false;
             }
             else if (HasCircle == true)
             {
-                Boxes.Circles++;
+                Circles++;
                 HasCircle = false;
             }
 
         }
 
-        /*private void OnTriggerEnter2D(Collider2D collision)
-        {
-
-        private void OnTriggerStay2D(Collider2D collision)
-        {
-            Box = collision.gameObject;
-
-            if (Input.GetKeyDown(KeyCode.E) && collision.gameObject.CompareTag("Box"))
-            {
-                print("package recieved");
-                Destroy(Box);
-                myAnim.SetBool("HasBox", true);
-                HasBox = true;
-            }
-            if (collision.gameObject.CompareTag("Truck") && Input.GetKeyDown(KeyCode.E))
-            {
-                myAnim.SetBool("HasBox", false);
-                HasBox = false;
-                Boxes.TruckCount++;
-            }
-        }
-
-
-            Box = collision.gameObject;
-
-            if (Input.GetKeyDown(KeyCode.E) && collision.gameObject.CompareTag("Box"))
-            {
-                print("package recieved");
-                /*if (collision.gameObject.CompareTag("BoxTri"))
-                {
-                    panel.Type[0].BoxTriNum += 1;
-                }
-                else if (collision.gameObject.CompareTag("BoxCirc"))
-                {
-                    panel.Type[0].BoxCircNum += 1;
-                }
-                else if(collision.gameObject.CompareTag("BoxRect"))
-                {
-                    panel.Type[0].BoxRectNum += 1;
-                }*//*
-                Destroy(Box);
-                myAnim.SetBool("HasBox", true);
-                HasBox = true;
-            }*/
+        
     }
     //Updates the order information.
     public void OrderText()
