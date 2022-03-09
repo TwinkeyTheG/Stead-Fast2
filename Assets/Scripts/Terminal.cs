@@ -1,8 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using TMPro;
-using UnityEngine.Events;
 /*********************************
  * Conner Vergara
  * 3/4/2021
@@ -11,12 +9,9 @@ using UnityEngine.Events;
 
 public class Terminal : MonoBehaviour
 {
-    //tells whether the UI
-    //updates order info
-    public static UnityEvent UpdateOrder = new UnityEvent();
-    public TMP_Text myOrder;
     public int OrderNumber = 1, PackageNum = 1;
     private static int customers = 4;
+    public bool displayOn = false;
     //structure for orders
     public struct Orders
     {
@@ -59,21 +54,12 @@ public class Terminal : MonoBehaviour
     {
         
     }
-    private void OrderText()
-    {
-        myOrder.text = "House: " + Type[OrderNumber].houseNum + "\n" +
-              "Circle Box(es): " + Type[OrderNumber].BoxCircNum + "\n" +
-               "Triangle Box(es): " + Type[OrderNumber].BoxTriNum + "\n" +
-               "Rectangle Box(es): " + Type[OrderNumber].BoxRectNum + "\n";
-    }
-
     //A function for the player to interact with the terminal.
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            OrderText();
-            UpdateOrder.AddListener(OrderText);
+            displayOn = true;
         }
     }
     //Ask Ryan about using a OnTriggerStay2D for this?
