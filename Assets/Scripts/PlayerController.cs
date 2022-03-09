@@ -173,9 +173,12 @@ public class PlayerController : MonoBehaviour
         else if (Input.GetAxisRaw("Jump") == 0)
         {
             jumpPressed = false;
+            jumpTimer = 0;
         }
         else if (jumpPressed == true && jumpTimer < jumpTime)
         {
+            print("jumpTimer?");
+            
             jumpTimer += Time.deltaTime;
             myRb.drag = airDrag;
             myRb.velocity = (Vector2.up * jumpForce) + new Vector2(myRb.velocity.x, 0);
@@ -327,7 +330,7 @@ public class PlayerController : MonoBehaviour
                 HasCircle = false;
             }
         }
-<<<<<<< HEAD
+
     }
     //to update Order display when colliding with terminal
     private void OnTriggerEnter2D(Collider2D collision)
@@ -347,10 +350,7 @@ public class PlayerController : MonoBehaviour
         {
 
         }
-=======
 
-        
->>>>>>> f083b407f88bd08c9b75d0b84188ec130e147b15
     }
     //Updates the order information.
     public void OrderText()
