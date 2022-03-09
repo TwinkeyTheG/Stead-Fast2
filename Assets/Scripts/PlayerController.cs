@@ -27,9 +27,10 @@ public class PlayerController : MonoBehaviour
 
     //grabs gameobejct to destroy it and stores in this varible 
     private GameObject Box;
-    public Transform BoxSpawn;
     public static bool HasBox;
-
+    public static bool HasTriangle = false;
+    public static bool HasRectangle = false;
+    public static bool HasCircle = false;
     //used for checking what direction to be flipped
     private bool facingRight = true;
 
@@ -55,6 +56,12 @@ public class PlayerController : MonoBehaviour
 
     private AudioSource myAud;
     public AudioClip jumpNoise;
+    /*public AudioClip jumpNoise;
+    public AudioClip jumpNoise;
+    public AudioClip jumpNoise;
+    public AudioClip jumpNoise;
+    public AudioClip jumpNoise;
+    public AudioClip jumpNoise;*/
 
     //ladder things
     private bool isClimbing;
@@ -136,10 +143,10 @@ public class PlayerController : MonoBehaviour
             myRb.velocity = (Vector2.up * jumpForce) + new Vector2(myRb.velocity.x, 0);
             jumpPressed = true;
         }
-        if(HasBox = true && Input.GetKeyDown(KeyCode.E))
+        /*if(HasBox = true && Input.GetKeyDown(KeyCode.E))
         { 
             
-        }
+        }*/
     }
     // FixedUpdate is called once per physics frame
     void FixedUpdate()
@@ -224,21 +231,65 @@ public class PlayerController : MonoBehaviour
     {
         Box = collision.gameObject;
 
+        if (HasBox == false && Input.GetKeyDown(KeyCode.E))
+        {
+            if (collision.gameObject.CompareTag("Triangle"))
+            {
+                print("Triangle recieved");
+                HasTriangle = true;
+                Destroy(Box);
+                myAnim.SetBool("HasBox", true);
+                HasBox = true;
+            }
+            else if (collision.gameObject.CompareTag("Rectangle"))
+            {
+                print("Rectangle recieved");
+                HasRectangle = true;
+                Destroy(Box);
+                myAnim.SetBool("HasBox", true);
+                HasBox = true;
+            }
+            else if (collision.gameObject.CompareTag("Circle"))
+            {
+                print("Circle recieved");
+                HasCircle = true;
+                Destroy(Box);
+                myAnim.SetBool("HasBox", true);
+                HasBox = true;
+            }
+        }
+        if (HasBox == true && collision.gameObject.CompareTag("Truck") && Input.GetKeyDown(KeyCode.E))
+        {
+            myAnim.SetBool("HasBox", false);
+            HasBox = false;
+            //Boxes.TruckCount++;
+            if (HasTriangle == true)
+            {
+                Boxes.Triangles++;
+                HasTriangle = false;
+            }else if (HasRectangle == true)
+            {
+                Boxes.Rectangles++;
+                HasRectangle = false;
+            }else if (HasCircle == true)
+            {
+                Boxes.Circles++;
+                HasCircle = false;
+            }
+
+        }
+    }
+
+    /*private void OnTriggerEnter2D(Collider2D collision)
+    {
+        
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        Box = collision.gameObject;
+
         if (Input.GetKeyDown(KeyCode.E) && collision.gameObject.CompareTag("Box"))
         {
             print("package recieved");
-            /*if (collision.gameObject.CompareTag("BoxTri"))
-            {
-                panel.Type[0].BoxTriNum += 1;
-            }
-            else if (collision.gameObject.CompareTag("BoxCirc"))
-            {
-                panel.Type[0].BoxCircNum += 1;
-            }
-            else if(collision.gameObject.CompareTag("BoxRect"))
-            {
-                panel.Type[0].BoxRectNum += 1;
-            }*/
             Destroy(Box);
             myAnim.SetBool("HasBox", true);
             HasBox = true;
@@ -250,9 +301,8 @@ public class PlayerController : MonoBehaviour
             Boxes.TruckCount++;
         }
     }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
+    
+    
         Box = collision.gameObject;
 
         if (Input.GetKeyDown(KeyCode.E) && collision.gameObject.CompareTag("Box"))
@@ -269,10 +319,9 @@ public class PlayerController : MonoBehaviour
             else if(collision.gameObject.CompareTag("BoxRect"))
             {
                 panel.Type[0].BoxRectNum += 1;
-            }*/
+            }*//*
             Destroy(Box);
             myAnim.SetBool("HasBox", true);
             HasBox = true;
-        }
-    }
+        }*/
 }

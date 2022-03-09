@@ -7,7 +7,9 @@ public class DeliverBox : MonoBehaviour
 {
     public Terminal myBox;
     public bool PackageDelivered = false;
-    public int TruckCount = 0;
+    public int Triangles = 0;
+    public int Rectangles = 0;
+    public int Circles = 0;
     // Start is called before the first frame update
     void Start()
     {

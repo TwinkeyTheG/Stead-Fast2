@@ -9,6 +9,9 @@ TagManager:
   - Terminal
   - House
   - Truck
+  - Circle
+  - Rectangle
+  - Triangle
   layers:
   - Default
   - TransparentFX
