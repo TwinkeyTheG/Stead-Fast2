@@ -63,5 +63,4 @@ public class GameManager : MonoBehaviour
     {
         score = 0;
     }
-
 }
