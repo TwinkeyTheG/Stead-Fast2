@@ -7,16 +7,39 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.Events;
+using TMPro;
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class PlayerController : MonoBehaviour
 {
+    //DeliverBox Variables
+    public bool PackageDelivered = false;
+    public int Triangles = 0;
+    public int Rectangles = 0;
+    public int Circles = 0;
+    //Order Data variables
+    public int OrderNumber = 1, PackageNum = 1;
+    private static int customers = 4;
+    public bool displayOn = false;
+    //structure for orders
+    public struct Orders
+    {
+        public int houseNum;
+        public int BoxTriNum;
+        public int BoxCircNum;
+        public int BoxRectNum;
+    }
+    // amount of orders is 6 for now
+    public Orders[] Type = new Orders[customers];
+
+    public bool begin = true;
     //Interaction ranges
     //public BoxCollider2D pickupRange, loadUp;
 
-    //other scripts that need to be accessed
-    DeliverBox Boxes;
+    //Order updating stuff
+    public static UnityEvent UpdateOrder = new UnityEvent();
+    public TMP_Text myOrder;
 
     //speed and movement variables
     public float speed;
@@ -76,8 +99,6 @@ public class PlayerController : MonoBehaviour
 
     //animation
     private Animator myAnim;
-
-    public Terminal panel;
     public GameObject terminal;
 
     // Start is called before the first frame update
@@ -86,10 +107,27 @@ public class PlayerController : MonoBehaviour
         myRb = GetComponent<Rigidbody2D>();
         myAud = GetComponent<AudioSource>();
         myAnim = GetComponent<Animator>();
-        Boxes = GetComponent<DeliverBox>();
         jumps = extraJumps;
-        panel = terminal.GetComponent<Terminal>();
         RespawnPoint = transform.position;
+        if (begin == true)
+        {
+            //populate the array with 0 for each box type
+            for (int i = 0; i < customers; i++)
+            {
+                Type[i].houseNum = 0;
+                Type[i].BoxTriNum = 0;
+                Type[i].BoxCircNum = 0;
+                Type[i].BoxRectNum = 0;
+            }
+            for (int i = 0; i < customers; i++)
+            {
+                Type[i].houseNum = i + 1;
+                Type[i].BoxTriNum = Random.Range(0, 5);
+                Type[i].BoxCircNum = Random.Range(0, 5);
+                Type[i].BoxRectNum = Random.Range(0, 5);
+            }
+            begin = false;
+        }
     }
 
     //Update is called once per frame
@@ -131,12 +169,11 @@ public class PlayerController : MonoBehaviour
             jumpPressed = true;
             jumps--;
         }
-        else if(Input.GetAxisRaw("Jump") == 0)
+        else if (Input.GetAxisRaw("Jump") == 0)
         {
             jumpPressed = false;
-            jumpTimer = 0;
         }
-        else if(jumpPressed == true && jumpTimer < jumpTime)
+        else if (jumpPressed == true && jumpTimer < jumpTime)
         {
             jumpTimer += Time.deltaTime;
             myRb.drag = airDrag;
@@ -162,17 +199,17 @@ public class PlayerController : MonoBehaviour
         moveInputV = Input.GetAxisRaw("Vertical") + Input.GetAxisRaw("Jump");
         //check for the ladder if around the player
         RaycastHit2D hitInfo = Physics2D.Raycast(groundCheck.position, Vector2.up, ladderDist, whatIsLadder);
-        
+
         //if ladder was found see if we are climbing, stop falling
         if (hitInfo.collider != null)
         {
             myRb.gravityScale = 0;
             isClimbing = true;
-            if(moveInputV > 0)
+            if (moveInputV > 0)
             {
                 myRb.AddForce(new Vector2(0, climbSpeed));
             }
-            else if(moveInputV < 0)
+            else if (moveInputV < 0)
             {
                 myRb.AddForce(new Vector2(0, -climbSpeed));
             }
@@ -186,11 +223,11 @@ public class PlayerController : MonoBehaviour
             myRb.gravityScale = gravityScale;
             isClimbing = false;
         }
-        
+
         //horizontal movement
         moveInputH = Input.GetAxisRaw("Horizontal");
         //animator settings
-        if(moveInputH == 0)
+        if (moveInputH == 0)
         {
             myAnim.SetBool("Moving", false);
         }
@@ -202,17 +239,17 @@ public class PlayerController : MonoBehaviour
         if (isGrounded && !jumpPressed || isClimbing)
         {
             myRb.drag = groundDrag;
-            myRb.AddForce(new Vector2(moveInputH * speed , 0));
+            myRb.AddForce(new Vector2(moveInputH * speed, 0));
         }
         else
         {
             myRb.drag = airDrag;
-            myRb.AddForce(new Vector2(moveInputH * airSpeed  , 0));
+            myRb.AddForce(new Vector2(moveInputH * airSpeed, 0));
         }
         //check if we need to flip the player direction
         if (facingRight == false && moveInputH > 0)
             Flip();
-        else if(facingRight == true && moveInputH < 0)
+        else if (facingRight == true && moveInputH < 0)
         {
             Flip();
         }
@@ -267,61 +304,114 @@ public class PlayerController : MonoBehaviour
             {
                 Boxes.Triangles++;
                 HasTriangle = false;
-            }else if (HasRectangle == true)
+            }
+            else if (HasRectangle == true)
             {
                 Boxes.Rectangles++;
                 HasRectangle = false;
-            }else if (HasCircle == true)
+            }
+            else if (HasCircle == true)
             {
                 Boxes.Circles++;
                 HasCircle = false;
             }
 
         }
+
+        /*private void OnTriggerEnter2D(Collider2D collision)
+        {
+
+        private void OnTriggerStay2D(Collider2D collision)
+        {
+            Box = collision.gameObject;
+
+            if (Input.GetKeyDown(KeyCode.E) && collision.gameObject.CompareTag("Box"))
+            {
+                print("package recieved");
+                Destroy(Box);
+                myAnim.SetBool("HasBox", true);
+                HasBox = true;
+            }
+            if (collision.gameObject.CompareTag("Truck") && Input.GetKeyDown(KeyCode.E))
+            {
+                myAnim.SetBool("HasBox", false);
+                HasBox = false;
+                Boxes.TruckCount++;
+            }
+        }
+
+
+            Box = collision.gameObject;
+
+            if (Input.GetKeyDown(KeyCode.E) && collision.gameObject.CompareTag("Box"))
+            {
+                print("package recieved");
+                /*if (collision.gameObject.CompareTag("BoxTri"))
+                {
+                    panel.Type[0].BoxTriNum += 1;
+                }
+                else if (collision.gameObject.CompareTag("BoxCirc"))
+                {
+                    panel.Type[0].BoxCircNum += 1;
+                }
+                else if(collision.gameObject.CompareTag("BoxRect"))
+                {
+                    panel.Type[0].BoxRectNum += 1;
+                }*//*
+                Destroy(Box);
+                myAnim.SetBool("HasBox", true);
+                HasBox = true;
+            }*/
+    }
+    //Updates the order information.
+    public void OrderText()
+    {
+        myOrder.text = "House: " + Type[OrderNumber].houseNum + "\n" +
+              "Circle Box(es): " + Type[OrderNumber].BoxCircNum + "\n" +
+               "Triangle Box(es): " + Type[OrderNumber].BoxTriNum + "\n" +
+               "Rectangle Box(es): " + Type[OrderNumber].BoxRectNum + "\n";
+    }
+    //updates the text of the canvas of the player
+    public void changeText()
+    {
+        OrderText();
+        UpdateOrder.AddListener(OrderText);
     }
 
-    /*private void OnTriggerEnter2D(Collider2D collision)
+    //------------------------------>>>>>>DeliverBox Functions
+    //will check if order was complete
+    /*if(myBox.Type[myBox.OrderNumber].BoxCircNum == 0 && myBox.Type[myBox.OrderNumber].BoxTriNum == 0 && myBox.Type[myBox.OrderNumber].BoxRectNum == 0)
     {
-        
-    private void OnTriggerStay2D(Collider2D collision)
-    {
-        Box = collision.gameObject;
-
-        if (Input.GetKeyDown(KeyCode.E) && collision.gameObject.CompareTag("Box"))
-        {
-            print("package recieved");
-            Destroy(Box);
-            myAnim.SetBool("HasBox", true);
-            HasBox = true;
-        }
-        if (collision.gameObject.CompareTag("Truck") && Input.GetKeyDown(KeyCode.E))
-        {
-            myAnim.SetBool("HasBox", false);
-            HasBox = false;
-            Boxes.TruckCount++;
-        }
+        print("Successfully delivered!");
+        PackageDelivered = true; 
     }
-    
-    
-        Box = collision.gameObject;
+    if (PackageDelivered == true)
+    {
+        myBox.OrderNumber++;
+        PackageDelivered = false;
+    }*/
 
-        if (Input.GetKeyDown(KeyCode.E) && collision.gameObject.CompareTag("Box"))
-        {
-            print("package recieved");
-            /*if (collision.gameObject.CompareTag("BoxTri"))
-            {
-                panel.Type[0].BoxTriNum += 1;
-            }
-            else if (collision.gameObject.CompareTag("BoxCirc"))
-            {
-                panel.Type[0].BoxCircNum += 1;
-            }
-            else if(collision.gameObject.CompareTag("BoxRect"))
-            {
-                panel.Type[0].BoxRectNum += 1;
-            }*//*
-            Destroy(Box);
-            myAnim.SetBool("HasBox", true);
-            HasBox = true;
-        }*/
+    //PackageDelivered = true;
+
+    //checks if the house has already recieved the sufficient amount of a box type and will return the message House Does Not need anymore of this box
+    /*if ((myBox.Type[myBox.OrderNumber].BoxCircNum == 0 && collision.gameObject.CompareTag("Cir")) || (myBox.Type[myBox.OrderNumber].BoxTriNum == 0 && collision.gameObject.CompareTag("Tri")) || (myBox.Type[myBox.OrderNumber].BoxRectNum == 0 && collision.gameObject.CompareTag("Rect")))
+     {
+         print("House Does Not need anymore of this box");
+     }
+     //keeps track of how many boxes will be delivered next.
+     else
+     {
+         if(collision.gameObject.CompareTag("Cir"))
+         {
+             myBox.Type[myBox.OrderNumber].BoxCircNum -= 1;
+         }
+         else if(collision.gameObject.CompareTag("Tri"))
+         {
+             myBox.Type[myBox.OrderNumber].BoxTriNum -= 1;
+         }
+         else if(collision.gameObject.CompareTag("Rect"))
+         {
+             myBox.Type[myBox.OrderNumber].BoxRectNum -= 1;
+         }
+     }*/
 }

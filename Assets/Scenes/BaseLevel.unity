@@ -727,6 +727,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb5589356b77f1a42afc66e3bfdb1e95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  myOrder: {fileID: 697469974}
 --- !u!4 &644582704
 Transform:
   m_ObjectHideFlags: 0
@@ -2966,9 +2967,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e2750745fd35f1489e3ac700fa10664, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  myOrder: {fileID: 697469974}
   OrderNumber: 1
   PackageNum: 1
+  displayOn: 0
   begin: 1
 --- !u!212 &1150265459
 SpriteRenderer:
