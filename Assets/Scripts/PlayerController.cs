@@ -330,7 +330,10 @@ public class PlayerController : MonoBehaviour
                 HasCircle = false;
             }
         }
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes
     }
     //to update Order display when colliding with terminal
     private void OnTriggerEnter2D(Collider2D collision)
@@ -350,7 +353,10 @@ public class PlayerController : MonoBehaviour
         {
 
         }
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes
     }
     //Updates the order information.
     public void OrderText()

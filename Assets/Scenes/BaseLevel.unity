@@ -259,7 +259,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -298.2, y: 170.3}
+  m_AnchoredPosition: {x: -299.3, y: 161.5}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &406348032
@@ -309,8 +309,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 20
+  m_fontSizeBase: 20
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -825,8 +825,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 20
+  m_fontSizeBase: 20
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -10454,12 +10454,20 @@ PrefabInstance:
     - target: {fileID: 8397047256095260028, guid: e32040e6322592942802c17c9ad76122,
         type: 3}
       propertyPath: m_LocalPosition.x
+<<<<<<< Updated upstream
       value: 2.16
+=======
+      value: 5.6
+>>>>>>> Stashed changes
       objectReference: {fileID: 0}
     - target: {fileID: 8397047256095260028, guid: e32040e6322592942802c17c9ad76122,
         type: 3}
       propertyPath: m_LocalPosition.y
+<<<<<<< Updated upstream
       value: 9.31
+=======
+      value: -6.74
+>>>>>>> Stashed changes
       objectReference: {fileID: 0}
     - target: {fileID: 8397047256095260028, guid: e32040e6322592942802c17c9ad76122,
         type: 3}
@@ -10513,6 +10521,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8397047256095260029, guid: e32040e6322592942802c17c9ad76122,
         type: 3}
+      propertyPath: myOrder
+      value: 
+      objectReference: {fileID: 697469974}
+    - target: {fileID: 8397047256095260029, guid: e32040e6322592942802c17c9ad76122,
+        type: 3}
       propertyPath: airSpeed
       value: 20
       objectReference: {fileID: 0}
@@ -10521,6 +10534,7 @@ PrefabInstance:
       propertyPath: terminal
       value: 
       objectReference: {fileID: 1150265456}
+<<<<<<< Updated upstream
     - target: {fileID: 8397047256095260030, guid: e32040e6322592942802c17c9ad76122,
         type: 3}
       propertyPath: m_Enabled
@@ -10530,6 +10544,12 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Enabled
       value: 1
+=======
+    - target: {fileID: 8397047256095260029, guid: e32040e6322592942802c17c9ad76122,
+        type: 3}
+      propertyPath: jumpForce
+      value: 15
+>>>>>>> Stashed changes
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 8397047256095260027, guid: e32040e6322592942802c17c9ad76122, type: 3}
