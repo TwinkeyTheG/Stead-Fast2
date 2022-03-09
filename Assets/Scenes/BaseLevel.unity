@@ -727,7 +727,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb5589356b77f1a42afc66e3bfdb1e95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  myOrder: {fileID: 0}
 --- !u!4 &644582704
 Transform:
   m_ObjectHideFlags: 0
@@ -3201,10 +3200,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e2750745fd35f1489e3ac700fa10664, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OrderNumber: 1
-  PackageNum: 1
-  displayOn: 0
-  begin: 1
 --- !u!212 &1150265459
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -10389,12 +10384,12 @@ PrefabInstance:
     - target: {fileID: -6216676716732595992, guid: e32040e6322592942802c17c9ad76122,
         type: 3}
       propertyPath: m_Size.y
-      value: 4.8246865
+      value: 2.6745822
       objectReference: {fileID: 0}
     - target: {fileID: -6216676716732595992, guid: e32040e6322592942802c17c9ad76122,
         type: 3}
       propertyPath: m_Offset.y
-      value: -0.6225198
+      value: -1.6975719
       objectReference: {fileID: 0}
     - target: {fileID: -6216676716732595992, guid: e32040e6322592942802c17c9ad76122,
         type: 3}
@@ -10459,12 +10454,12 @@ PrefabInstance:
     - target: {fileID: 8397047256095260028, guid: e32040e6322592942802c17c9ad76122,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.17
+      value: 2.16
       objectReference: {fileID: 0}
     - target: {fileID: 8397047256095260028, guid: e32040e6322592942802c17c9ad76122,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 9.39
+      value: 9.31
       objectReference: {fileID: 0}
     - target: {fileID: 8397047256095260028, guid: e32040e6322592942802c17c9ad76122,
         type: 3}
@@ -10526,6 +10521,16 @@ PrefabInstance:
       propertyPath: terminal
       value: 
       objectReference: {fileID: 1150265456}
+    - target: {fileID: 8397047256095260030, guid: e32040e6322592942802c17c9ad76122,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8397047256095260031, guid: e32040e6322592942802c17c9ad76122,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 8397047256095260027, guid: e32040e6322592942802c17c9ad76122, type: 3}
     - {fileID: 0}
