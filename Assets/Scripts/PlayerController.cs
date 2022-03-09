@@ -54,6 +54,7 @@ public class PlayerController : MonoBehaviour
     public static bool HasTriangle = false;
     public static bool HasRectangle = false;
     public static bool HasCircle = false;
+    //How many of each box is on the truck
     //used for checking what direction to be flipped
     private bool facingRight = true;
 
@@ -180,10 +181,17 @@ public class PlayerController : MonoBehaviour
             myRb.velocity = (Vector2.up * jumpForce) + new Vector2(myRb.velocity.x, 0);
             jumpPressed = true;
         }
-        /*if(HasBox = true && Input.GetKeyDown(KeyCode.E))
-        { 
-            
-        }*/
+        //will check if order was complete
+        if (Type[OrderNumber].BoxCircNum == 0 && Type[OrderNumber].BoxTriNum == 0 && Type[OrderNumber].BoxRectNum == 0)
+        {
+            print("Successfully delivered!");
+            PackageDelivered = true;
+        }
+        if (PackageDelivered == true)
+        {
+            OrderNumber++;
+            PackageDelivered = false;
+        }
     }
     // FixedUpdate is called once per physics frame
     void FixedUpdate()
@@ -264,35 +272,39 @@ public class PlayerController : MonoBehaviour
         transform.localScale = Scaler;
     }
 
+    //the player ho0lding a package system
     private void OnTriggerStay2D(Collider2D collision)
     {
-        Box = collision.gameObject;
-
-        if (HasBox == false && Input.GetKeyDown(KeyCode.E))
+        if (collision.gameObject.CompareTag("Triangle") || collision.gameObject.CompareTag("Rectangle") || collision.gameObject.CompareTag("Circle"))
         {
-            if (collision.gameObject.CompareTag("Triangle"))
+            Box = collision.gameObject;
+
+            if (HasBox == false && Input.GetKeyDown(KeyCode.E))
             {
-                print("Triangle recieved");
-                HasTriangle = true;
-                Destroy(Box);
-                myAnim.SetBool("HasBox", true);
-                HasBox = true;
-            }
-            else if (collision.gameObject.CompareTag("Rectangle"))
-            {
-                print("Rectangle recieved");
-                HasRectangle = true;
-                Destroy(Box);
-                myAnim.SetBool("HasBox", true);
-                HasBox = true;
-            }
-            else if (collision.gameObject.CompareTag("Circle"))
-            {
-                print("Circle recieved");
-                HasCircle = true;
-                Destroy(Box);
-                myAnim.SetBool("HasBox", true);
-                HasBox = true;
+                if (collision.gameObject.CompareTag("Triangle"))
+                {
+                    print("Triangle recieved");
+                    HasTriangle = true;
+                    Destroy(Box);
+                    myAnim.SetBool("HasBox", true);
+                    HasBox = true;
+                }
+                else if (collision.gameObject.CompareTag("Rectangle"))
+                {
+                    print("Rectangle recieved");
+                    HasRectangle = true;
+                    Destroy(Box);
+                    myAnim.SetBool("HasBox", true);
+                    HasBox = true;
+                }
+                else if (collision.gameObject.CompareTag("Circle"))
+                {
+                    print("Circle recieved");
+                    HasCircle = true;
+                    Destroy(Box);
+                    myAnim.SetBool("HasBox", true);
+                    HasBox = true;
+                }
             }
         }
         if (HasBox == true && collision.gameObject.CompareTag("Truck") && Input.GetKeyDown(KeyCode.E))
@@ -302,66 +314,39 @@ public class PlayerController : MonoBehaviour
             //Boxes.TruckCount++;
             if (HasTriangle == true)
             {
-                Boxes.Triangles++;
+                Triangles++;
                 HasTriangle = false;
             }
             else if (HasRectangle == true)
             {
-                Boxes.Rectangles++;
+                Rectangles++;
                 HasRectangle = false;
             }
             else if (HasCircle == true)
             {
-                Boxes.Circles++;
+                Circles++;
                 HasCircle = false;
             }
-
         }
-
-        /*private void OnTriggerEnter2D(Collider2D collision)
+    }
+    //to update Order display when colliding with terminal
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.gameObject.CompareTag("Terminal"))
+        {
+            changeText();
+            displayOn = true;
+        }
+        //checks if the house has already recieved the sufficient amount of a box type and will return the message House Does Not need anymore of this box
+        if (collision.gameObject.CompareTag("House") && ((Type[OrderNumber].BoxCircNum != 0 && collision.gameObject.CompareTag("Cir")) && (Type[OrderNumber].BoxTriNum != 0 && collision.gameObject.CompareTag("Tri")) && (Type[OrderNumber].BoxRectNum == 0 && collision.gameObject.CompareTag("Rect"))))
+        {
+            print("House still requires packages that you don't currently posses. Go back to the wearhouse and load up more of this package type.");
+        }
+        //keeps track of how many boxes will be delivered next.
+        else
         {
 
-        private void OnTriggerStay2D(Collider2D collision)
-        {
-            Box = collision.gameObject;
-
-            if (Input.GetKeyDown(KeyCode.E) && collision.gameObject.CompareTag("Box"))
-            {
-                print("package recieved");
-                Destroy(Box);
-                myAnim.SetBool("HasBox", true);
-                HasBox = true;
-            }
-            if (collision.gameObject.CompareTag("Truck") && Input.GetKeyDown(KeyCode.E))
-            {
-                myAnim.SetBool("HasBox", false);
-                HasBox = false;
-                Boxes.TruckCount++;
-            }
         }
-
-
-            Box = collision.gameObject;
-
-            if (Input.GetKeyDown(KeyCode.E) && collision.gameObject.CompareTag("Box"))
-            {
-                print("package recieved");
-                /*if (collision.gameObject.CompareTag("BoxTri"))
-                {
-                    panel.Type[0].BoxTriNum += 1;
-                }
-                else if (collision.gameObject.CompareTag("BoxCirc"))
-                {
-                    panel.Type[0].BoxCircNum += 1;
-                }
-                else if(collision.gameObject.CompareTag("BoxRect"))
-                {
-                    panel.Type[0].BoxRectNum += 1;
-                }*//*
-                Destroy(Box);
-                myAnim.SetBool("HasBox", true);
-                HasBox = true;
-            }*/
     }
     //Updates the order information.
     public void OrderText()
@@ -377,41 +362,9 @@ public class PlayerController : MonoBehaviour
         OrderText();
         UpdateOrder.AddListener(OrderText);
     }
+    //function to subtract values needed to be delivered to the houses 
+    /*public int deliverPackages(int package, int packageRequired)
+    {
 
-    //------------------------------>>>>>>DeliverBox Functions
-    //will check if order was complete
-    /*if(myBox.Type[myBox.OrderNumber].BoxCircNum == 0 && myBox.Type[myBox.OrderNumber].BoxTriNum == 0 && myBox.Type[myBox.OrderNumber].BoxRectNum == 0)
-    {
-        print("Successfully delivered!");
-        PackageDelivered = true; 
-    }
-    if (PackageDelivered == true)
-    {
-        myBox.OrderNumber++;
-        PackageDelivered = false;
     }*/
-
-    //PackageDelivered = true;
-
-    //checks if the house has already recieved the sufficient amount of a box type and will return the message House Does Not need anymore of this box
-    /*if ((myBox.Type[myBox.OrderNumber].BoxCircNum == 0 && collision.gameObject.CompareTag("Cir")) || (myBox.Type[myBox.OrderNumber].BoxTriNum == 0 && collision.gameObject.CompareTag("Tri")) || (myBox.Type[myBox.OrderNumber].BoxRectNum == 0 && collision.gameObject.CompareTag("Rect")))
-     {
-         print("House Does Not need anymore of this box");
-     }
-     //keeps track of how many boxes will be delivered next.
-     else
-     {
-         if(collision.gameObject.CompareTag("Cir"))
-         {
-             myBox.Type[myBox.OrderNumber].BoxCircNum -= 1;
-         }
-         else if(collision.gameObject.CompareTag("Tri"))
-         {
-             myBox.Type[myBox.OrderNumber].BoxTriNum -= 1;
-         }
-         else if(collision.gameObject.CompareTag("Rect"))
-         {
-             myBox.Type[myBox.OrderNumber].BoxRectNum -= 1;
-         }
-     }*/
 }
