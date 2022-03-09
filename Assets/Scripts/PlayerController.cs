@@ -311,7 +311,6 @@ public class PlayerController : MonoBehaviour
         {
             myAnim.SetBool("HasBox", false);
             HasBox = false;
-            //Boxes.TruckCount++;
             if (HasTriangle == true)
             {
                 Triangles++;
@@ -328,6 +327,7 @@ public class PlayerController : MonoBehaviour
                 HasCircle = false;
             }
         }
+<<<<<<< HEAD
     }
     //to update Order display when colliding with terminal
     private void OnTriggerEnter2D(Collider2D collision)
@@ -347,6 +347,10 @@ public class PlayerController : MonoBehaviour
         {
 
         }
+=======
+
+        
+>>>>>>> f083b407f88bd08c9b75d0b84188ec130e147b15
     }
     //Updates the order information.
     public void OrderText()
