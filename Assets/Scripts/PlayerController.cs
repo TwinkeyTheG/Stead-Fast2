@@ -303,13 +303,15 @@ public class PlayerController : MonoBehaviour
             Data.changeText();
             Data.displayOn = true;
         }
-        if(collision.gameObject.CompareTag("1") || collision.gameObject.CompareTag("2") || collision.gameObject.CompareTag("3") || collision.gameObject.CompareTag("4"))
+        for(int i = 1; i <= GameManager.customers; i++)
         {
-            housenum = collision.gameObject.tag;
-            
+            if (collision.gameObject.CompareTag(i.ToString()) && i == Data.Type[Data.OrderNumber].houseNum)
+            {
+
+            }
         }
         //checks if the house has already recieved the sufficient amount of a box type and will return the message House Does Not need anymore of this box
-        if(collision.gameObject.CompareTag("House") && Data.Type[Data.OrderNumber].BoxCircNum != 0 && Data.Type[Data.OrderNumber].BoxTriNum != 0 && Data.Type[Data.OrderNumber].BoxRectNum != 0)
+        if( && Data.Type[Data.OrderNumber].BoxCircNum != 0 && Data.Type[Data.OrderNumber].BoxTriNum != 0 && Data.Type[Data.OrderNumber].BoxRectNum != 0)
         {
             print("House still needs other packages");
         }

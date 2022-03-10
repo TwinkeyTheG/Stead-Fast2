@@ -5,7 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class TruckControlV2 : MonoBehaviour
 {
-
+    //Object to store GameManagerData in
+    GameManager Data;
 
     private Rigidbody2D rb;
 
@@ -88,9 +89,12 @@ public class TruckControlV2 : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.layer == LayerMask.NameToLayer("test"))
+        if (collision.gameObject.layer == LayerMask.NameToLayer("House"))
         {
-            if (collision.gameObject.CompareTag("House"))
+            //int to compare the house number of the order to
+            int Location = 0;
+            int.TryParse(collision.gameObject.tag, out Location);
+            if(Location == Data.Type[Data.OrderNumber].houseNum)
             {
                 SceneManager.LoadScene("Win");
             }
