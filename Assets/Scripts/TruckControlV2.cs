@@ -161,7 +161,7 @@ public class TruckControlV2 : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         GameObject Destroyable = collision.gameObject;
-        if(collision.gameObject.CompareTag("Bustable"))
+        if(collision.gameObject.CompareTag("Bussin"))
         {
             Destroy(Destroyable);
             GameManager.score += 10;
