@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class TruckControlV2 : MonoBehaviour
 {
@@ -84,5 +85,16 @@ public class TruckControlV2 : MonoBehaviour
         // Calculate an opposite force to the drift and apply this to generate sideways traction (aka tyre grip)
         Vector2 relativeForce = (rightAngleFromForward.normalized * -1.0f) * (driftForce * 10.0f);
         rb.AddForce(rb.GetRelativeVector(relativeForce));
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.layer == LayerMask.NameToLayer("test"))
+        {
+            if (collision.gameObject.CompareTag("House"))
+            {
+                SceneManager.LoadScene("Win");
+            }
+        }
+
     }
 }
