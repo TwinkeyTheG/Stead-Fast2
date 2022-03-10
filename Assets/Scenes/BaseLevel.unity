@@ -727,6 +727,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb5589356b77f1a42afc66e3bfdb1e95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PackageDelivered: 0
+  Triangles: 0
+  Rectangles: 0
+  Circles: 0
+  OrderNumber: 1
+  PackageNum: 1
+  displayOn: 0
+  begin: 1
+  myOrder: {fileID: 697469974}
 --- !u!4 &644582704
 Transform:
   m_ObjectHideFlags: 0
@@ -3154,7 +3163,6 @@ GameObject:
   - component: {fileID: 1150265460}
   - component: {fileID: 1150265459}
   - component: {fileID: 1150265457}
-  - component: {fileID: 1150265458}
   m_Layer: 0
   m_Name: Terminal
   m_TagString: Terminal
@@ -3188,18 +3196,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 3.4344614, y: 2.7212274}
   m_EdgeRadius: 0
---- !u!114 &1150265458
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1150265456}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5e2750745fd35f1489e3ac700fa10664, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!212 &1150265459
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -10403,6 +10399,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1274165463910818625, guid: e32040e6322592942802c17c9ad76122,
         type: 3}
+      propertyPath: Mute
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1274165463910818625, guid: e32040e6322592942802c17c9ad76122,
+        type: 3}
       propertyPath: m_audioClip
       value: 
       objectReference: {fileID: 8300000, guid: 555e52b32f89786488859c8c6d592c9c, type: 3}
@@ -10505,7 +10506,7 @@ PrefabInstance:
         type: 3}
       propertyPath: panel
       value: 
-      objectReference: {fileID: 1150265458}
+      objectReference: {fileID: 0}
     - target: {fileID: 8397047256095260029, guid: e32040e6322592942802c17c9ad76122,
         type: 3}
       propertyPath: airDrag
@@ -10516,6 +10517,11 @@ PrefabInstance:
       propertyPath: airSpeed
       value: 20
       objectReference: {fileID: 0}
+    - target: {fileID: 8397047256095260029, guid: e32040e6322592942802c17c9ad76122,
+        type: 3}
+      propertyPath: footstep
+      value: 
+      objectReference: {fileID: 8300000, guid: a3de49211e013de488328dc2aa8e00b9, type: 3}
     - target: {fileID: 8397047256095260029, guid: e32040e6322592942802c17c9ad76122,
         type: 3}
       propertyPath: terminal

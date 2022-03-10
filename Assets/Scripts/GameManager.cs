@@ -10,6 +10,31 @@ using UnityEngine.Events;
 using TMPro;
 public class GameManager : MonoBehaviour
 {
+    //DeliverBox Variables
+    public bool PackageDelivered = false;
+    public int Triangles = 0;
+    public int Rectangles = 0;
+    public int Circles = 0;
+    //Order Data variables
+    public int OrderNumber = 1, PackageNum = 1;
+    public static int customers = 4;
+    public bool displayOn = false;
+    //structure for orders
+    public struct Orders
+    {
+        public int houseNum;
+        public int BoxTriNum;
+        public int BoxCircNum;
+        public int BoxRectNum;
+    }
+    // amount of orders is 6 for now
+    public Orders[] Type = new Orders[customers];
+
+    public bool begin = true;
+
+    //Order updating stuff
+    public static UnityEvent UpdateOrder = new UnityEvent();
+    public TMP_Text myOrder;
     //allow this component to be grabbed from anywhere and make sure only one exists
     public static GameManager Instance;
     //event to listen to for the score change
@@ -48,7 +73,25 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        if (begin == true)
+        {
+            //populate the array with 0 for each box type
+            for (int i = 0; i < customers; i++)
+            {
+                Type[i].houseNum = 0;
+                Type[i].BoxTriNum = 0;
+                Type[i].BoxCircNum = 0;
+                Type[i].BoxRectNum = 0;
+            }
+            for (int i = 0; i < customers; i++)
+            {
+                Type[i].houseNum = i + 1;
+                Type[i].BoxTriNum = Random.Range(0, 5);
+                Type[i].BoxCircNum = Random.Range(0, 5);
+                Type[i].BoxRectNum = Random.Range(0, 5);
+            }
+            begin = false;
+        }
     }
 
     // Update is called once per frame
@@ -62,5 +105,19 @@ public class GameManager : MonoBehaviour
     public static void ResetGame()
     {
         score = 0;
+    }
+    //Updates the order information.
+    public void OrderText()
+    {
+        myOrder.text = "House: " + Type[OrderNumber].houseNum + "\n" +
+              "Circle Box(es): " + Type[OrderNumber].BoxCircNum + "\n" +
+               "Triangle Box(es): " + Type[OrderNumber].BoxTriNum + "\n" +
+               "Rectangle Box(es): " + Type[OrderNumber].BoxRectNum + "\n";
+    }
+    //updates the text of the canvas of the player
+    public void changeText()
+    {
+        OrderText();
+        UpdateOrder.AddListener(OrderText);
     }
 }
