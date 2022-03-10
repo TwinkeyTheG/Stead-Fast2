@@ -92,18 +92,23 @@ public class PlayerController : MonoBehaviour
     //Update is called once per frame
     private void Update()
     {
-        if(Data.displayOn == true)
+        //Issue is here
+        /*if(Data.displayOn == true)
         {
             Data.changeText();
-        }
+        }*/
         moveInputH = Input.GetAxisRaw("Horizontal");
         if (isGrounded == true)
         {
             jumps = extraJumps;
         }
+        print(jumpPressed);
+        print(isGrounded);
+        print(isClimbing);
         //check if jump can be triggered
         if (Input.GetAxisRaw("Jump") == 1 && jumpPressed == false && isGrounded == true && isClimbing == false)
         {
+            
             myAud.PlayOneShot(jumpNoise);
             myRb.drag = airDrag;
             if ((myRb.velocity.x < 0 && moveInputH > 0) || (myRb.velocity.x > 0 && moveInputH < 0))
