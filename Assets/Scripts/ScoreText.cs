@@ -22,7 +22,6 @@ public class ScoreText : MonoBehaviour
     private void ChangeText()
     {
         myText.text = "Money: " + GameManager.score;
-       
     }
     // Update is called once per frame
     void Update()

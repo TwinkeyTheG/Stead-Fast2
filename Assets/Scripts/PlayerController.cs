@@ -92,11 +92,6 @@ public class PlayerController : MonoBehaviour
     //Update is called once per frame
     private void Update()
     {
-        //Issue is here
-        /*if(Data.displayOn == true)
-        {
-            Data.changeText();
-        }*/
         moveInputH = Input.GetAxisRaw("Horizontal");
         if (isGrounded == true)
         {
@@ -281,7 +276,7 @@ public class PlayerController : MonoBehaviour
             myAnim.SetBool("HasBox", false);
             HasBox = false;
             if (HasTriangle == true)
-            {
+            {              
                 Data.Triangles++;
                 HasTriangle = false;
             }
@@ -302,9 +297,9 @@ public class PlayerController : MonoBehaviour
     //to update Order display when colliding with terminal
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        string housenum;
         if(collision.gameObject.CompareTag("Terminal"))
         {
+            print("Terminal was triggered");
             Data.changeText();
             Data.displayOn = true;
         }
@@ -321,10 +316,10 @@ public class PlayerController : MonoBehaviour
             print("House still needs other packages");
         }
         //keeps track of how many boxes will be delivered next.
-        else
+        /*else
         {
 
-        }
+        }*/
 
     }
     public void PlayFoot()
