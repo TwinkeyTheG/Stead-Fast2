@@ -13,34 +13,10 @@ using TMPro;
 [RequireComponent(typeof(Rigidbody2D))]
 public class PlayerController : MonoBehaviour
 {
-    //DeliverBox Variables
-    public bool PackageDelivered = false;
-    public int Triangles = 0;
-    public int Rectangles = 0;
-    public int Circles = 0;
-    //Order Data variables
-    public int OrderNumber = 1, PackageNum = 1;
-    private static int customers = 4;
-    public bool displayOn = false;
-    //structure for orders
-    public struct Orders
-    {
-        public int houseNum;
-        public int BoxTriNum;
-        public int BoxCircNum;
-        public int BoxRectNum;
-    }
-    // amount of orders is 6 for now
-    public Orders[] Type = new Orders[customers];
-
-    public bool begin = true;
-    //Interaction ranges
-    //public BoxCollider2D pickupRange, loadUp;
-
-    //Order updating stuff
-    public static UnityEvent UpdateOrder = new UnityEvent();
-    public TMP_Text myOrder;
-
+    //audio clips
+    public AudioClip footstep;
+    //Game manager Object
+    GameManager Data;
     //speed and movement variables
     public float speed;
     public float airSpeed;
@@ -105,36 +81,21 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
         myRb = GetComponent<Rigidbody2D>();
         myAud = GetComponent<AudioSource>();
         myAnim = GetComponent<Animator>();
         jumps = extraJumps;
         RespawnPoint = transform.position;
-        if (begin == true)
-        {
-            //populate the array with 0 for each box type
-            for (int i = 0; i < customers; i++)
-            {
-                Type[i].houseNum = 0;
-                Type[i].BoxTriNum = 0;
-                Type[i].BoxCircNum = 0;
-                Type[i].BoxRectNum = 0;
-            }
-            for (int i = 0; i < customers; i++)
-            {
-                Type[i].houseNum = i + 1;
-                Type[i].BoxTriNum = Random.Range(0, 5);
-                Type[i].BoxCircNum = Random.Range(0, 5);
-                Type[i].BoxRectNum = Random.Range(0, 5);
-            }
-            begin = false;
-        }
     }
 
     //Update is called once per frame
     private void Update()
     {
-
+        if(Data.displayOn == true)
+        {
+            Data.changeText();
+        }
         moveInputH = Input.GetAxisRaw("Horizontal");
         if (isGrounded == true)
         {
@@ -185,15 +146,15 @@ public class PlayerController : MonoBehaviour
             jumpPressed = true;
         }
         //will check if order was complete
-        if (Type[OrderNumber].BoxCircNum == 0 && Type[OrderNumber].BoxTriNum == 0 && Type[OrderNumber].BoxRectNum == 0)
+        if (Data.Type[Data.OrderNumber].BoxCircNum == 0 && Data.Type[Data.OrderNumber].BoxTriNum == 0 && Data.Type[Data.OrderNumber].BoxRectNum == 0)
         {
             print("Successfully delivered!");
-            PackageDelivered = true;
+            Data.PackageDelivered = true;
         }
-        if (PackageDelivered == true)
+        if (Data.PackageDelivered == true)
         {
-            OrderNumber++;
-            PackageDelivered = false;
+            Data.OrderNumber++;
+            Data.PackageDelivered = false;
         }
     }
     // FixedUpdate is called once per physics frame
@@ -316,34 +277,41 @@ public class PlayerController : MonoBehaviour
             HasBox = false;
             if (HasTriangle == true)
             {
-                Triangles++;
+                Data.Triangles++;
                 HasTriangle = false;
             }
             else if (HasRectangle == true)
             {
-                Rectangles++;
+                Data.Rectangles++;
                 HasRectangle = false;
             }
             else if (HasCircle == true)
             {
-                Circles++;
+                Data.Circles++;
                 HasCircle = false;
             }
         }
 
     }
+
     //to update Order display when colliding with terminal
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        string housenum;
         if(collision.gameObject.CompareTag("Terminal"))
         {
-            changeText();
-            displayOn = true;
+            Data.changeText();
+            Data.displayOn = true;
+        }
+        if(collision.gameObject.CompareTag("1") || collision.gameObject.CompareTag("2") || collision.gameObject.CompareTag("3") || collision.gameObject.CompareTag("4"))
+        {
+            housenum = collision.gameObject.tag;
+            
         }
         //checks if the house has already recieved the sufficient amount of a box type and will return the message House Does Not need anymore of this box
-        if (collision.gameObject.CompareTag("House") && ((Type[OrderNumber].BoxCircNum != 0 && collision.gameObject.CompareTag("Cir")) && (Type[OrderNumber].BoxTriNum != 0 && collision.gameObject.CompareTag("Tri")) && (Type[OrderNumber].BoxRectNum == 0 && collision.gameObject.CompareTag("Rect"))))
+        if(collision.gameObject.CompareTag("House") && Data.Type[Data.OrderNumber].BoxCircNum != 0 && Data.Type[Data.OrderNumber].BoxTriNum != 0 && Data.Type[Data.OrderNumber].BoxRectNum != 0)
         {
-            print("House still requires packages that you don't currently posses. Go back to the wearhouse and load up more of this package type.");
+            print("House still needs other packages");
         }
         //keeps track of how many boxes will be delivered next.
         else
@@ -352,19 +320,9 @@ public class PlayerController : MonoBehaviour
         }
 
     }
-    //Updates the order information.
-    public void OrderText()
+    public void PlayFoot()
     {
-        myOrder.text = "House: " + Type[OrderNumber].houseNum + "\n" +
-              "Circle Box(es): " + Type[OrderNumber].BoxCircNum + "\n" +
-               "Triangle Box(es): " + Type[OrderNumber].BoxTriNum + "\n" +
-               "Rectangle Box(es): " + Type[OrderNumber].BoxRectNum + "\n";
-    }
-    //updates the text of the canvas of the player
-    public void changeText()
-    {
-        OrderText();
-        UpdateOrder.AddListener(OrderText);
+        myAud.PlayOneShot(footstep);
     }
     //function to subtract values needed to be delivered to the houses 
     /*public int deliverPackages(int package, int packageRequired)
