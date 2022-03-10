@@ -243,7 +243,7 @@ public class PlayerController : MonoBehaviour
         {
             Box = collision.gameObject;
 
-            if (HasBox == false && Input.GetKeyDown(KeyCode.E))
+            if (HasBox == false && Input.GetKey(KeyCode.E))
             {
                 if (collision.gameObject.CompareTag("Triangle"))
                 {
@@ -271,7 +271,7 @@ public class PlayerController : MonoBehaviour
                 }
             }
         }
-        if (HasBox == true && collision.gameObject.CompareTag("Truck") && Input.GetKeyDown(KeyCode.E))
+        if (HasBox == true && collision.gameObject.CompareTag("Truck") && Input.GetKey(KeyCode.E))
         {
             myAnim.SetBool("HasBox", false);
             HasBox = false;
