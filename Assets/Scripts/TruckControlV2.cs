@@ -89,6 +89,10 @@ public class TruckControlV2 : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        //stores the specified order details into integer values
+        int TriBoxes = Data.Type[Data.OrderNumber].BoxTriNum, CircBoxes = Data.Type[Data.OrderNumber].BoxCircNum, RectBoxes = Data.Type[Data.OrderNumber].BoxRectNum;
+        //keeps track of the remainder
+        int Remainder = 0;
         if (collision.gameObject.layer == LayerMask.NameToLayer("House"))
         {
             //int to compare the house number of the order to
@@ -96,9 +100,71 @@ public class TruckControlV2 : MonoBehaviour
             int.TryParse(collision.gameObject.tag, out Location);
             if(Location == Data.Type[Data.OrderNumber].houseNum)
             {
-                SceneManager.LoadScene("Win");
+                //checks if the truck has more boxes than required in the order.
+                if(Data.Triangles >= TriBoxes)
+                {
+                    //first finds the remainder
+                    Remainder = Data.Triangles - Data.Type[Data.OrderNumber].BoxTriNum;
+                    //then sets the remainder of the boxes to the amount in truck
+                    Data.Triangles = Remainder;
+                    //Finally elimnates the value from the order
+                    Data.Type[Data.OrderNumber].BoxTriNum = 0;
+                }
+                //otherwise, if the amount in order is higher than amount in truck then...
+                else
+                {
+                    //Leaves the remaining amount in order details
+                    Data.Type[Data.OrderNumber].BoxTriNum -= Data.Triangles;
+                    //then leaves 0 left in truck
+                    Data.Triangles = 0;
+                }
+                //checks if the truck has more boxes than required in the order.
+                if (Data.Circles >= CircBoxes)
+                {
+                    //first finds the remainder
+                    Remainder = Data.Circles - Data.Type[Data.OrderNumber].BoxCircNum;
+                    //then sets the remainder of the boxes to the amount in truck
+                    Data.Circles = Remainder;
+                    //Finally elimnates the value from the order
+                    Data.Type[Data.OrderNumber].BoxCircNum = 0;
+                }
+                //otherwise, if the amount in order is higher than amount in truck then...
+                else
+                {
+                    //Leaves the remaining amount in order details
+                    Data.Type[Data.OrderNumber].BoxCircNum -= Data.Circles;
+                    //then leaves 0 left in truck
+                    Data.Circles = 0;
+                }
+                //checks if the truck has more boxes than required in the order.
+                if (Data.Rectangles >= RectBoxes)
+                {
+                    //first finds the remainder
+                    Remainder = Data.Rectangles - Data.Type[Data.OrderNumber].BoxRectNum;
+                    //then sets the remainder of the boxes to the amount in truck
+                    Data.Rectangles = Remainder;
+                    //Finally elimnates the value from the order
+                    Data.Type[Data.OrderNumber].BoxRectNum = 0;
+                }
+                //otherwise, if the amount in order is higher than amount in truck then...
+                else
+                {
+                    //Leaves the remaining amount in order details
+                    Data.Type[Data.OrderNumber].BoxRectNum -= Data.Rectangles;
+                    //then leaves 0 left in truck
+                    Data.Rectangles = 0;
+                }
             }
         }
 
+    }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        GameObject Destroyable = collision.gameObject;
+        if(collision.gameObject.CompareTag("Bustable"))
+        {
+            Destroy(Destroyable);
+            GameManager.score += 10;
+        }
     }
 }

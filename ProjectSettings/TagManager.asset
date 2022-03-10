@@ -7,11 +7,14 @@ TagManager:
   - Enemy
   - Box
   - Terminal
-  - House
   - Truck
   - Circle
   - Rectangle
   - Triangle
+  - 1
+  - 2
+  - 4
+  - 3
   layers:
   - Default
   - TransparentFX
@@ -24,7 +27,7 @@ TagManager:
   - Ground
   - OneWayGround
   - Ladder
-  - test
+  - House
   - 
   - 
   - 

@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
 {
     //DeliverBox Variables
     public bool PackageDelivered = false;
+    //These variables hold the values of how many packages are on the truck
     public int Triangles = 0;
     public int Rectangles = 0;
     public int Circles = 0;

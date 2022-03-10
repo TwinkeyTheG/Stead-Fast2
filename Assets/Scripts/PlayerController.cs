@@ -311,7 +311,7 @@ public class PlayerController : MonoBehaviour
             }
         }
         //checks if the house has already recieved the sufficient amount of a box type and will return the message House Does Not need anymore of this box
-        if( && Data.Type[Data.OrderNumber].BoxCircNum != 0 && Data.Type[Data.OrderNumber].BoxTriNum != 0 && Data.Type[Data.OrderNumber].BoxRectNum != 0)
+        if(Data.Type[Data.OrderNumber].BoxCircNum != 0 && Data.Type[Data.OrderNumber].BoxTriNum != 0 && Data.Type[Data.OrderNumber].BoxRectNum != 0)
         {
             print("House still needs other packages");
         }
