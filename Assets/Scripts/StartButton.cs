@@ -17,12 +17,6 @@ public class StartButton : MonoBehaviour
     public void LevelLoad()
     {
         SceneManager.LoadScene(LevelToLoad);
-        man.begin = false;
-        man.PackageDelivered = false;
-        man.MoneyEarned = 0;
-        man.Lost = 0;
-        man.ShiftDur = 720;
-        man.displayOn = false;
     }
 
     public void ResetData()

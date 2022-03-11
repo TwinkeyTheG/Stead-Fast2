@@ -129,7 +129,7 @@ public class GameManager : MonoBehaviour
             strikes++;
             ShiftDur = 720;
         }*/
-        if(ShiftDur <= 0 && CompletedOrders < 8)
+        /*if(ShiftDur <= 0 && CompletedOrders < 8)
         {
             SceneManager.LoadScene("Win");
             Lost += 100;
@@ -142,7 +142,7 @@ public class GameManager : MonoBehaviour
         while(displayOn == true)
         {
             changeText();
-        }
+        }*/
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             Application.Quit();
