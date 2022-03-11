@@ -362,7 +362,6 @@ public class PlayerController : MonoBehaviour
         }
 
     }
-    private void OnKeyDown
     //to update Order display when colliding with terminal
     private void OnTriggerEnter2D(Collider2D collision)
     {

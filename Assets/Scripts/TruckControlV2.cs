@@ -5,6 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class TruckControlV2 : MonoBehaviour
 {
+    //Gas the truck has
+    public float gas = 70;
+
     //Object to store GameManagerData in
     GameManager Data;
 
@@ -37,6 +40,7 @@ public class TruckControlV2 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        gas -= Time.deltaTime;
         hInput = Input.GetAxis("Horizontal");
         vInput = Input.GetAxis("Vertical");
     }
