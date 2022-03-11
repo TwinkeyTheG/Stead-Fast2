@@ -10331,6 +10331,26 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8397047256095260029, guid: e32040e6322592942802c17c9ad76122,
         type: 3}
+      propertyPath: dropBox1
+      value: 
+      objectReference: {fileID: 8300000, guid: 214417002dbb5374ebf146b4e2ca4cf4, type: 3}
+    - target: {fileID: 8397047256095260029, guid: e32040e6322592942802c17c9ad76122,
+        type: 3}
+      propertyPath: dropBox2
+      value: 
+      objectReference: {fileID: 8300000, guid: 6d52f89d0e06d354c8f9a580b6d8bf60, type: 3}
+    - target: {fileID: 8397047256095260029, guid: e32040e6322592942802c17c9ad76122,
+        type: 3}
+      propertyPath: dropBox3
+      value: 
+      objectReference: {fileID: 8300000, guid: 28175ba4060ec984e8ef4a0bdc301b97, type: 3}
+    - target: {fileID: 8397047256095260029, guid: e32040e6322592942802c17c9ad76122,
+        type: 3}
+      propertyPath: dropBox4
+      value: 
+      objectReference: {fileID: 8300000, guid: 662e113e137547a4e92610273cdf283b, type: 3}
+    - target: {fileID: 8397047256095260029, guid: e32040e6322592942802c17c9ad76122,
+        type: 3}
       propertyPath: footstep
       value: 
       objectReference: {fileID: 8300000, guid: a3de49211e013de488328dc2aa8e00b9, type: 3}
@@ -10345,6 +10365,21 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8159941496806124432, guid: ff0b5f7b8e90e9743be6b5dcbe249cd2,
         type: 3}
+    - target: {fileID: 8397047256095260029, guid: e32040e6322592942802c17c9ad76122,
+        type: 3}
+      propertyPath: jumpNoise
+      value: 
+      objectReference: {fileID: 8300000, guid: 39e815db8f7692a44ba7653e4d249281, type: 3}
+    - target: {fileID: 8397047256095260029, guid: e32040e6322592942802c17c9ad76122,
+        type: 3}
+      propertyPath: boxPickup1
+      value: 
+      objectReference: {fileID: 8300000, guid: 78ed205fa05b6ed49a7bd2a64f906818, type: 3}
+    - target: {fileID: 8397047256095260029, guid: e32040e6322592942802c17c9ad76122,
+        type: 3}
+      propertyPath: boxPickup2
+      value: 
+      objectReference: {fileID: 8300000, guid: 4d208a8054147404583c40ce237fb9df, type: 3}
     - target: {fileID: 8397047256095260030, guid: e32040e6322592942802c17c9ad76122,
         type: 3}
       propertyPath: m_Enabled

@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Events;
+using TMPro;
 
 public class TruckControlV2 : MonoBehaviour
 {
@@ -14,6 +16,14 @@ public class TruckControlV2 : MonoBehaviour
     private Rigidbody2D rb;
 
     private AudioSource myAud;
+
+    /*public AudioClip jumpNoises;
+    public AudioClip dropBox1s;
+    public AudioClip dropBox2s;
+    public AudioClip dropBox3s;
+    public AudioClip dropBox4s;
+    public AudioClip boxPickups1;
+    public AudioClip boxPickup2s;*/
 
     //animation
     private Animator myAnim;
@@ -40,6 +50,7 @@ public class TruckControlV2 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        ////////////////////////////////myAud.PlayOneShot(dropBox4);
         gas -= Time.deltaTime;
         hInput = Input.GetAxis("Horizontal");
         vInput = Input.GetAxis("Vertical");
