@@ -56,12 +56,12 @@ public class PlayerController : MonoBehaviour
 
     private AudioSource myAud;
     public AudioClip jumpNoise;
-    /*public AudioClip jumpNoise;
-    public AudioClip jumpNoise;
-    public AudioClip jumpNoise;
-    public AudioClip jumpNoise;
-    public AudioClip jumpNoise;
-    public AudioClip jumpNoise;*/
+    public AudioClip dropBox1;
+    public AudioClip dropBox2;
+    public AudioClip dropBox3;
+    public AudioClip dropBox4;
+    public AudioClip boxPickup1;
+    public AudioClip boxPickup2;
 
     //ladder things
     private bool isClimbing;
@@ -78,7 +78,7 @@ public class PlayerController : MonoBehaviour
     private Animator myAnim;
     public GameObject terminal;
 
-
+    
     public GameObject Triangle;
     public GameObject Rectangle;
     public GameObject Circle;
@@ -105,6 +105,7 @@ public class PlayerController : MonoBehaviour
     //Update is called once per frame
     private void Update()
     {
+        
         if (InstantiationNeed == true)
         {
             Place();
@@ -262,16 +263,19 @@ public class PlayerController : MonoBehaviour
         {
             IsTri = true;
             Instantiate(Triangle, TrianglePos, Quaternion.identity);
+            myAud.PlayOneShot(dropBox1);
         }
         if (IsCirc == false)
         {
             IsCirc = true;
             Instantiate(Circle, CirclePos, Quaternion.identity);
+            myAud.PlayOneShot(dropBox2);
         }
         if (IsRect == false)
         {
             IsRect = true;
             Instantiate(Rectangle, RectanglePos, Quaternion.identity);
+            myAud.PlayOneShot(dropBox3);
         }
     }
 
@@ -283,16 +287,19 @@ public class PlayerController : MonoBehaviour
         {
             HasTriangle = false;
             Instantiate(Triangle, CurrentPos, Quaternion.identity);
+            myAud.PlayOneShot(dropBox1);
         }
         else if (HasCircle == true)
         {
             HasCircle = false;
             Instantiate(Circle, CurrentPos, Quaternion.identity);
+            myAud.PlayOneShot(dropBox2);
         }
         else if (HasRectangle == true)
         {
             HasRectangle = false;
             Instantiate(Rectangle, CurrentPos, Quaternion.identity);
+            myAud.PlayOneShot(dropBox3);
         }
     }
 
@@ -312,7 +319,7 @@ public class PlayerController : MonoBehaviour
                     Destroy(Box);
                     myAnim.SetBool("HasBox", true);
                     HasBox = true;
-                    if (transform.TransformPoint(Vector3.zero) == TrianglePos)
+                    myAud.PlayOneShot(boxPickup1);
                     InstantiationNeed = true;
                     IsTri = false;
                 }
@@ -323,6 +330,7 @@ public class PlayerController : MonoBehaviour
                     Destroy(Box);
                     myAnim.SetBool("HasBox", true);
                     HasBox = true;
+                    myAud.PlayOneShot(boxPickup1);
                     InstantiationNeed = true;
                     IsRect = false;
                 }
@@ -333,6 +341,7 @@ public class PlayerController : MonoBehaviour
                     Destroy(Box);
                     myAnim.SetBool("HasBox", true);
                     HasBox = true;
+                    myAud.PlayOneShot(boxPickup2);
                     InstantiationNeed = true;
                     IsCirc = false;
                 }
@@ -342,6 +351,7 @@ public class PlayerController : MonoBehaviour
         {
             myAnim.SetBool("HasBox", false);
             HasBox = false;
+            myAud.PlayOneShot(dropBox4);
             if (HasTriangle == true)
             {              
                 Data.Triangles++;
