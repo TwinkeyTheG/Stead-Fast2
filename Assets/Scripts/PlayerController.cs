@@ -82,13 +82,13 @@ public class PlayerController : MonoBehaviour
     public GameObject Triangle;
     public GameObject Rectangle;
     public GameObject Circle;
-    private Vector3 TrianglePos = new Vector3(-9, 2, 0);
-    private Vector3 RectanglePos = new Vector3(13, -1, 0);
-    private Vector3 CirclePos = new Vector3(9, -7, 0);
-    private bool IsTri = true;
-    private bool IsRect = true;
-    private bool IsCirc = true;
-    private bool InstantiationNeed = false;
+    private Vector3 TrianglePos = new Vector3(25.56f, 6.5f, 0);
+    private Vector3 RectanglePos = new Vector3(24.51f, -5.55f, 0);
+    private Vector3 CirclePos = new Vector3(-8.3f, 1.3f, 0);
+    private bool IsTri = false;
+    private bool IsRect = false;
+    private bool IsCirc = false;
+    private bool InstantiationNeed = true;
     private Vector3 CurrentPos = new Vector3();
 
     // Start is called before the first frame update
@@ -264,11 +264,13 @@ public class PlayerController : MonoBehaviour
         {
             IsTri = true;
             Instantiate(Triangle, TrianglePos, Quaternion.identity);
-        }else if (IsCirc == false)
+        }
+        if (IsCirc == false)
         {
             IsCirc = true;
             Instantiate(Circle, CirclePos, Quaternion.identity);
-        }else if (IsRect == false)
+        }
+        if (IsRect == false)
         {
             IsRect = true;
             Instantiate(Rectangle, RectanglePos, Quaternion.identity);
