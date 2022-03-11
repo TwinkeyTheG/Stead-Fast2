@@ -78,6 +78,19 @@ public class PlayerController : MonoBehaviour
     private Animator myAnim;
     public GameObject terminal;
 
+
+    public GameObject Triangle;
+    public GameObject Rectangle;
+    public GameObject Circle;
+    private Vector3 TrianglePos = new Vector3(-9, 2, 0);
+    private Vector3 RectanglePos = new Vector3(13, -1, 0);
+    private Vector3 CirclePos = new Vector3(9, -7, 0);
+    private bool IsTri = true;
+    private bool IsRect = true;
+    private bool IsCirc = true;
+    private bool InstantiationNeed = false;
+    private Vector3 CurrentPos = new Vector3();
+
     // Start is called before the first frame update
     void Start()
     {
@@ -92,6 +105,14 @@ public class PlayerController : MonoBehaviour
     //Update is called once per frame
     private void Update()
     {
+        if (InstantiationNeed == true)
+        {
+            Place();
+        }
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            DropBox();
+        }
         moveInputH = Input.GetAxisRaw("Horizontal");
         if (isGrounded == true)
         {
@@ -236,6 +257,48 @@ public class PlayerController : MonoBehaviour
         transform.localScale = Scaler;
     }
 
+    void Place()
+    {
+        InstantiationNeed = false;
+        if (IsTri == false)
+        {
+            IsTri = true;
+            Instantiate(Triangle, TrianglePos, Quaternion.identity);
+        }else if (IsCirc == false)
+        {
+            IsCirc = true;
+            Instantiate(Circle, CirclePos, Quaternion.identity);
+        }else if (IsRect == false)
+        {
+            IsRect = true;
+            Instantiate(Rectangle, RectanglePos, Quaternion.identity);
+        }
+    }
+
+    void DropBox()
+    {
+        if (HasBox == true)
+        {
+            HasBox = false;
+            CurrentPos = transform.position;
+            if (HasTriangle == true)
+            {
+                HasTriangle = false;
+                Instantiate(Triangle, CurrentPos, Quaternion.identity);
+            }
+            else if (HasCircle == true)
+            {
+                HasCircle = false;
+                Instantiate(Circle, CurrentPos, Quaternion.identity);
+            }
+            else if (HasRectangle == true)
+            {
+                HasRectangle = false;
+                Instantiate(Rectangle, CurrentPos, Quaternion.identity);
+            }
+        }
+    }
+
     //the player ho0lding a package system
     private void OnTriggerStay2D(Collider2D collision)
     {
@@ -252,6 +315,8 @@ public class PlayerController : MonoBehaviour
                     Destroy(Box);
                     myAnim.SetBool("HasBox", true);
                     HasBox = true;
+                    InstantiationNeed = true;
+                    IsTri = false;
                 }
                 else if (collision.gameObject.CompareTag("Rectangle"))
                 {
@@ -260,6 +325,8 @@ public class PlayerController : MonoBehaviour
                     Destroy(Box);
                     myAnim.SetBool("HasBox", true);
                     HasBox = true;
+                    InstantiationNeed = true;
+                    IsRect = false;
                 }
                 else if (collision.gameObject.CompareTag("Circle"))
                 {
@@ -268,6 +335,8 @@ public class PlayerController : MonoBehaviour
                     Destroy(Box);
                     myAnim.SetBool("HasBox", true);
                     HasBox = true;
+                    InstantiationNeed = true;
+                    IsCirc = false;
                 }
             }
         }
@@ -293,7 +362,7 @@ public class PlayerController : MonoBehaviour
         }
 
     }
-
+    private void OnKeyDown
     //to update Order display when colliding with terminal
     private void OnTriggerEnter2D(Collider2D collision)
     {
