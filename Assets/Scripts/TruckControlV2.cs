@@ -169,6 +169,7 @@ public class TruckControlV2 : MonoBehaviour
         {
             Destroy(Destroyable);
             GameManager.score += 10;
+            Data.E
         }
     }
 }

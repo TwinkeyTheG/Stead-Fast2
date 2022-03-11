@@ -11,8 +11,12 @@ using TMPro;
 using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
+    //orders completed
+    public int CompletedOrders = 0;
+    //amount earned by the player
+    public int MoneyEarned = 0;
     //Amount Lost
-    int Lost = 0;
+    public int Lost = 0;
     //GameObjects for the other scripts
     TruckControlV2 truck;
     //the amount of strikes you have
@@ -27,7 +31,7 @@ public class GameManager : MonoBehaviour
     public int Circles = 0;
     //Order Data variables
     public int OrderNumber = 1, PackageNum = 1;
-    public static int customers = 4;
+    public static int customers = 8;
     public bool displayOn = false;
     //structure for orders
     public struct Orders
@@ -117,7 +121,7 @@ public class GameManager : MonoBehaviour
             strikes++;
             ShiftDur = 720;
         }
-        if(ShiftDur <= 0)
+        if(ShiftDur <= 0 && CompletedOrders < 8)
         {
             SceneManager.LoadScene("Win");
         }
