@@ -8,8 +8,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using TMPro;
+using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
+    //Amount Lost
+    int Lost = 0;
+    //GameObjects for the other scripts
+    TruckControlV2 truck;
+    //the amount of strikes you have
+    int strikes = 0;
+    //Keepstrack of the time of day which is 12 mins per shift
+    float ShiftDur = 720;
     //DeliverBox Variables
     public bool PackageDelivered = false;
     //These variables hold the values of how many packages are on the truck
@@ -98,6 +107,21 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(strikes == 3)
+        {
+            SceneManager.LoadScene("LoseScreen");
+        }
+        if(truck.gas <= 0)
+        {
+            SceneManager.LoadScene("Win");
+            strikes++;
+            ShiftDur = 720;
+        }
+        if(ShiftDur <= 0)
+        {
+            SceneManager.LoadScene("Win");
+        }
+        ShiftDur -= Time.deltaTime;
         while(displayOn == true)
         {
             changeText();

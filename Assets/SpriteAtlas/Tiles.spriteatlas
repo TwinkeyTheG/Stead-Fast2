@@ -44,12 +44,13 @@ SpriteAtlas:
     variantMultiplier: 1
     packables:
     - {fileID: 102900000, guid: 015970736cfa36e4c88054972bb3d2ba, type: 3}
-    totalSpriteSurfaceArea: 35705384
+    totalSpriteSurfaceArea: 35717672
     bindAsDefault: 1
     isAtlasV2: 0
     cachedData: {fileID: 0}
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
+  - {fileID: 21300000, guid: 9a88d800a1676fb479608a86c4a618a5, type: 3}
   - {fileID: -4798660805697494436, guid: 31d275104b5994549bccfc43d40afc9d, type: 3}
   - {fileID: 5255097115066879530, guid: 31d275104b5994549bccfc43d40afc9d, type: 3}
   - {fileID: -2998381803889387890, guid: 31d275104b5994549bccfc43d40afc9d, type: 3}
@@ -74,6 +75,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: b65bca5250323374d98434f1a026a41f, type: 3}
   - {fileID: 21300000, guid: 929d57d246b051641ab3bb0b1dfd0991, type: 3}
   - {fileID: 21300000, guid: 738884f2c162f7e499a39cefe00cfdd5, type: 3}
+  - {fileID: 21300000, guid: 36e0cd035d4fa8a4a9121b2e74b2e477, type: 3}
   - {fileID: -2271126364942332167, guid: 26b26f03fea6bf246acdd466bd9204e3, type: 3}
   - {fileID: -3922075350502517888, guid: 26b26f03fea6bf246acdd466bd9204e3, type: 3}
   - {fileID: 8731894359902762407, guid: 26b26f03fea6bf246acdd466bd9204e3, type: 3}
@@ -243,6 +245,7 @@ SpriteAtlas:
   - {fileID: 4270534300578249953, guid: 05b2b30aef9fe9644923c63a3c998535, type: 3}
   - {fileID: -6659714930703967861, guid: 05b2b30aef9fe9644923c63a3c998535, type: 3}
   - {fileID: 2435984372978048006, guid: 05b2b30aef9fe9644923c63a3c998535, type: 3}
+  - {fileID: 21300000, guid: f7a4c44a1187d74468c2093f8994b5c7, type: 3}
   - {fileID: 21300000, guid: 58af227a6ecdbbc4aad7c732f6657247, type: 3}
   - {fileID: 21300000, guid: 5d462b2bc359a104a85993f428f5778a, type: 3}
   - {fileID: 21300000, guid: 8de23f8b37d7ab24ebad910244803070, type: 3}
@@ -388,6 +391,7 @@ SpriteAtlas:
   - {fileID: 10244363629482489, guid: 568d12af1e371f34a9168d7c2b140acc, type: 3}
   - {fileID: 21300000, guid: 4f1db8cfba97d3e4f934914c825e0100, type: 3}
   m_PackedSpriteNamesToIndex:
+  - quit button
   - player with a box ANIMATION_1
   - player with a box ANIMATION_0
   - player with a box ANIMATION_3
@@ -412,6 +416,7 @@ SpriteAtlas:
   - background_initial_design_448x320px (1)
   - house_3_tile
   - Backdrop_youre_fired_withbox
+  - play button
   - improved player ANIMATION_1
   - improved player ANIMATION_0
   - improved player ANIMATION_3
@@ -581,6 +586,7 @@ SpriteAtlas:
   - improved player with a box jumping animation _2
   - improved player with a box jumping animation _1
   - improved player with a box jumping animation _0
+  - Buttons_main_menu_2
   - road_bottomleft_turn_tile
   - win_screen_backdrop
   - player -1.png
