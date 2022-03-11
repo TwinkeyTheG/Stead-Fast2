@@ -109,8 +109,9 @@ public class PlayerController : MonoBehaviour
         {
             Place();
         }
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.R) && HasBox == true)
         {
+            myAnim.SetBool("HasBox", false);
             DropBox();
         }
         moveInputH = Input.GetAxisRaw("Horizontal");
@@ -118,9 +119,6 @@ public class PlayerController : MonoBehaviour
         {
             jumps = extraJumps;
         }
-        print(jumpPressed);
-        print(isGrounded);
-        print(isClimbing);
         //check if jump can be triggered
         if (Input.GetAxisRaw("Jump") == 1 && jumpPressed == false && isGrounded == true && isClimbing == false)
         {
@@ -279,25 +277,22 @@ public class PlayerController : MonoBehaviour
 
     void DropBox()
     {
-        if (HasBox == true)
+        HasBox = false;
+        CurrentPos = transform.TransformPoint(Vector3.zero);
+        if (HasTriangle == true)
         {
-            HasBox = false;
-            CurrentPos = transform.position;
-            if (HasTriangle == true)
-            {
-                HasTriangle = false;
-                Instantiate(Triangle, CurrentPos, Quaternion.identity);
-            }
-            else if (HasCircle == true)
-            {
-                HasCircle = false;
-                Instantiate(Circle, CurrentPos, Quaternion.identity);
-            }
-            else if (HasRectangle == true)
-            {
-                HasRectangle = false;
-                Instantiate(Rectangle, CurrentPos, Quaternion.identity);
-            }
+            HasTriangle = false;
+            Instantiate(Triangle, CurrentPos, Quaternion.identity);
+        }
+        else if (HasCircle == true)
+        {
+            HasCircle = false;
+            Instantiate(Circle, CurrentPos, Quaternion.identity);
+        }
+        else if (HasRectangle == true)
+        {
+            HasRectangle = false;
+            Instantiate(Rectangle, CurrentPos, Quaternion.identity);
         }
     }
 
@@ -317,6 +312,7 @@ public class PlayerController : MonoBehaviour
                     Destroy(Box);
                     myAnim.SetBool("HasBox", true);
                     HasBox = true;
+                    if (transform.TransformPoint(Vector3.zero) == TrianglePos)
                     InstantiationNeed = true;
                     IsTri = false;
                 }
