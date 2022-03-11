@@ -11,14 +11,18 @@ using TMPro;
 using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
+    //orders completed
+    public int CompletedOrders = 0;
+    //amount earned by the player
+    public int MoneyEarned = 0;
     //Amount Lost
-    int Lost = 0;
+    public int Lost = 0;
     //GameObjects for the other scripts
     TruckControlV2 truck;
     //the amount of strikes you have
     int strikes = 0;
     //Keepstrack of the time of day which is 12 mins per shift
-    float ShiftDur = 720;
+    public float ShiftDur = 720;
     //DeliverBox Variables
     public bool PackageDelivered = false;
     //These variables hold the values of how many packages are on the truck
@@ -27,7 +31,7 @@ public class GameManager : MonoBehaviour
     public int Circles = 0;
     //Order Data variables
     public int OrderNumber = 1, PackageNum = 1;
-    public static int customers = 4;
+    public static int customers = 8;
     public bool displayOn = false;
     //structure for orders
     public struct Orders
@@ -107,6 +111,14 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        /*int Tri = Type[OrderNumber].BoxTriNum, Cir = Type[OrderNumber].BoxCircNum, Rect = Type[OrderNumber].BoxCircNum;
+        for (int i = 1; i < 4; i++)
+        {
+            if(Tri == 0 && Cir == 0 && Rect == 0)
+            {
+
+            }
+        }
         if(strikes == 3)
         {
             SceneManager.LoadScene("LoseScreen");
@@ -116,8 +128,13 @@ public class GameManager : MonoBehaviour
             SceneManager.LoadScene("Win");
             strikes++;
             ShiftDur = 720;
+        }*/
+        if(ShiftDur <= 0 && CompletedOrders < 8)
+        {
+            SceneManager.LoadScene("Win");
+            Lost += 100;
         }
-        if(ShiftDur <= 0)
+        else
         {
             SceneManager.LoadScene("Win");
         }
@@ -130,6 +147,11 @@ public class GameManager : MonoBehaviour
         {
             Application.Quit();
         }
+        /*if(Tri == 0 && Cir == 0 && Rect == 0)
+        {
+            PackageDelivered = true;
+            CompletedOrders++;
+        }*/
     }
     public static void ResetGame()
     {
