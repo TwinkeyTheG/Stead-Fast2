@@ -12,18 +12,8 @@ public class EndDoor : MonoBehaviour
 {
     public string LevelToLoad = "NeighborHood";
     // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    private void OnCollisionStay2D(Collision2D collision)
+    private void OnTriggerStay2D(Collision2D collision)
     {
         if(collision.gameObject.CompareTag("Player") && Input.GetKeyDown(KeyCode.F))
         {

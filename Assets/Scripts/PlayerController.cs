@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class PlayerController : MonoBehaviour
@@ -375,8 +376,6 @@ public class PlayerController : MonoBehaviour
     {
         if(collision.gameObject.CompareTag("Terminal"))
         {
-            print("Terminal was triggered");
-            Data.changeText();
             Data.displayOn = true;
         }
         for(int i = 1; i <= GameManager.customers; i++)

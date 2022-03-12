@@ -14,9 +14,9 @@ public class TruckControlV2 : MonoBehaviour
     GameManager Data;
 
     private Rigidbody2D rb;
-
+    //Audio stuff
     private AudioSource myAud;
-
+    public AudioClip Crash;
     /*public AudioClip jumpNoises;
     public AudioClip dropBox1s;
     public AudioClip dropBox2s;
@@ -179,6 +179,7 @@ public class TruckControlV2 : MonoBehaviour
         if(collision.gameObject.CompareTag("Bussin"))
         {
             Destroy(Destroyable);
+            myAud.PlayOneShot(Crash);
             GameManager.score += 10;
             Data.MoneyEarned += 10;
         }

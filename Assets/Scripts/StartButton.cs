@@ -17,10 +17,18 @@ public class StartButton : MonoBehaviour
     public void LevelLoad()
     {
         SceneManager.LoadScene(LevelToLoad);
+        man.displayOn = false;
+        man.CompletedOrders = 0;
+        man.Circles = 0;
+        man.Triangles = 0;
+        man.Rectangles = 0;
+        man.ShiftDur = 720;
+        man.ShiftDur = 720;
     }
 
     public void ResetData()
     {
         GameManager.score = 0;
     }
+
 }

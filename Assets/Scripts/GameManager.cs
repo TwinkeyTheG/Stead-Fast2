@@ -16,11 +16,11 @@ public class GameManager : MonoBehaviour
     //amount earned by the player
     public int MoneyEarned = 0;
     //Amount Lost
-    public int Lost = 0;
+    //public int Lost = 0;
     //GameObjects for the other scripts
     TruckControlV2 truck;
     //the amount of strikes you have
-    int strikes = 0;
+    //int strikes = 0;
     //Keepstrack of the time of day which is 12 mins per shift
     public float ShiftDur = 720;
     //DeliverBox Variables
@@ -30,7 +30,7 @@ public class GameManager : MonoBehaviour
     public int Rectangles = 0;
     public int Circles = 0;
     //Order Data variables
-    public int OrderNumber = 1, PackageNum = 1;
+    public int OrderNumber = 1;
     public static int customers = 8;
     public bool displayOn = false;
     //structure for orders
@@ -81,9 +81,7 @@ public class GameManager : MonoBehaviour
         {
             Destroy(this);
         }
-        
     }
-
     // Start is called before the first frame update
     void Start()
     {
@@ -138,11 +136,11 @@ public class GameManager : MonoBehaviour
         {
             SceneManager.LoadScene("Win");
         }
-        ShiftDur -= Time.deltaTime;
+        ShiftDur -= Time.deltaTime;*/
         while(displayOn == true)
         {
             changeText();
-        }*/
+        }
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             Application.Quit();

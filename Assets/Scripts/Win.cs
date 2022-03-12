@@ -32,7 +32,7 @@ public class Win : MonoBehaviour
     public void OrderText()
     {
         Earned.text = "Money Earned: " + man.MoneyEarned;
-        Lost.text = "Lost Money: " + man.Lost + "\n";
+        //Lost.text = "Lost Money: " + man.Lost + "\n";
                
     }
     //updates the text of the canvas of the player
