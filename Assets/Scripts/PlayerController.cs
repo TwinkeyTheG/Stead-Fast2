@@ -124,7 +124,6 @@ public class PlayerController : MonoBehaviour
         //check if jump can be triggered
         if (Input.GetAxisRaw("Jump") == 1 && jumpPressed == false && isGrounded == true && isClimbing == false)
         {
-            
             myAud.PlayOneShot(jumpNoise);
             myRb.drag = airDrag;
             if ((myRb.velocity.x < 0 && moveInputH > 0) || (myRb.velocity.x > 0 && moveInputH < 0))

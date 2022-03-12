@@ -24,6 +24,7 @@ public class StartButton : MonoBehaviour
         man.Rectangles = 0;
         man.ShiftDur = 720;
         man.ShiftDur = 720;
+        man.begin = true;
     }
 
     public void ResetData()
