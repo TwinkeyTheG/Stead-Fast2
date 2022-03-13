@@ -44,7 +44,7 @@ SpriteAtlas:
     variantMultiplier: 1
     packables:
     - {fileID: 102900000, guid: 015970736cfa36e4c88054972bb3d2ba, type: 3}
-    totalSpriteSurfaceArea: 38269311
+    totalSpriteSurfaceArea: 38314367
     bindAsDefault: 1
     isAtlasV2: 0
     cachedData: {fileID: 0}
@@ -61,11 +61,15 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 41facaa0dd51b1a4ab8f07d99e20b464, type: 3}
   - {fileID: 21300000, guid: 35f289b0622691a41925f05b8bdc197e, type: 3}
   - {fileID: 21300000, guid: aadfa2c028fbfc543a699aa46838166b, type: 3}
+  - {fileID: 21300000, guid: a44c53c035013dc4b86f4e668da90c6e, type: 3}
+  - {fileID: 21300000, guid: 6971ecf00153c6545b8450696f54974e, type: 3}
+  - {fileID: 21300000, guid: ec2149018b8ee544090b9cdd094139a1, type: 3}
   - {fileID: 21300000, guid: b9914d21bcc917c4da08fa5c69924d60, type: 3}
   - {fileID: 21300000, guid: 9e75a73107f55654ba9e4eca49d24c74, type: 3}
   - {fileID: 21300000, guid: 87e21c315643abc40925aa0aeec2d4ed, type: 3}
   - {fileID: 21300000, guid: 76a2ba71b6ef057459462db58696dda3, type: 3}
   - {fileID: 21300000, guid: 6b4d9091f5b1fd040bf9d7ff15fd16fc, type: 3}
+  - {fileID: 21300000, guid: 2cbf55b1051f456499187f3738c4ea9b, type: 3}
   - {fileID: 21300000, guid: 8dff84d131cecf840ad589faa082dbf0, type: 3}
   - {fileID: 21300000, guid: 212d39d1a3daa6b45aa53ab8dcc48b4f, type: 3}
   - {fileID: -4048101367312991832, guid: 1bd45ee1aa4014f4fbac696f1a125dd7, type: 3}
@@ -79,6 +83,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 2ca9471229eb86349891ebbe24e24019, type: 3}
   - {fileID: 21300000, guid: b65bca5250323374d98434f1a026a41f, type: 3}
   - {fileID: 21300000, guid: 929d57d246b051641ab3bb0b1dfd0991, type: 3}
+  - {fileID: 21300000, guid: e7fd0ce2f9934bb4385a3d377336c8b3, type: 3}
   - {fileID: 21300000, guid: 738884f2c162f7e499a39cefe00cfdd5, type: 3}
   - {fileID: 21300000, guid: 36e0cd035d4fa8a4a9121b2e74b2e477, type: 3}
   - {fileID: -2271126364942332167, guid: 26b26f03fea6bf246acdd466bd9204e3, type: 3}
@@ -90,6 +95,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 76f83d430e52f174ab5c6314e5b5a551, type: 3}
   - {fileID: 21300000, guid: cf84675372c02bb4aa32773fd88d04b8, type: 3}
   - {fileID: 21300000, guid: a31781637a54c5c49a878e7d2fa42d2b, type: 3}
+  - {fileID: 21300000, guid: 8a3a98735fc1a844bb32a8a531bf28a1, type: 3}
   - {fileID: 21300000, guid: 421ee79333382c446bdd0ef2528f4f9d, type: 3}
   - {fileID: 21300000, guid: 19aa22a38e79c8241ae57ad0bc3b8e75, type: 3}
   - {fileID: -8799693141063424109, guid: 2b046eb3ab8924e40b7c26f88608da45, type: 3}
@@ -97,11 +103,13 @@ SpriteAtlas:
   - {fileID: -871970863703263856, guid: 2b046eb3ab8924e40b7c26f88608da45, type: 3}
   - {fileID: -5418714596512855576, guid: 2b046eb3ab8924e40b7c26f88608da45, type: 3}
   - {fileID: -7271592382768704787, guid: 2b046eb3ab8924e40b7c26f88608da45, type: 3}
+  - {fileID: 21300000, guid: 912188d32af61b94bbd1653af83f044b, type: 3}
   - {fileID: 21300000, guid: 81d8cdf3c8a4cf34f8d13ad29c87129b, type: 3}
   - {fileID: 21300000, guid: 7010471496d1cf443bc3bcdcea2d550c, type: 3}
   - {fileID: 21300000, guid: 46349b447e0b5ad4f841439af1f700fe, type: 3}
   - {fileID: 21300000, guid: d83ad05446f49d84fb28bb7431c401c3, type: 3}
   - {fileID: 21300000, guid: 400459648ca29ec468b0b3f4709b91e7, type: 3}
+  - {fileID: 21300000, guid: e79e0984db5f9d54d94356d29090b616, type: 3}
   - {fileID: 21300000, guid: e88966c4448c5444693d41e7ec8cb701, type: 3}
   - {fileID: 8184935739919376306, guid: 3d9dbae4946dccd4d80efda374c00880, type: 3}
   - {fileID: 3325123018235209228, guid: 3d9dbae4946dccd4d80efda374c00880, type: 3}
@@ -109,6 +117,7 @@ SpriteAtlas:
   - {fileID: 8874078680544922272, guid: 3d9dbae4946dccd4d80efda374c00880, type: 3}
   - {fileID: -817027095465427462, guid: 3d9dbae4946dccd4d80efda374c00880, type: 3}
   - {fileID: 21300000, guid: e3ed54450be9aee4c9c72fc9f8232314, type: 3}
+  - {fileID: 21300000, guid: d0533a452e819e64087eaf5099e27e42, type: 3}
   - {fileID: 21300000, guid: c15240759fdd23c4d9159d25bfff9801, type: 3}
   - {fileID: 21300000, guid: 73c9aec5d973cd9468b6c9f4f9796e8a, type: 3}
   - {fileID: 5801077327000510287, guid: ede468d584673494fad49d1731b3cc94, type: 3}
@@ -120,11 +129,13 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 1097f8d57a0b6d5418272bd6b6fe9ebf, type: 3}
   - {fileID: 21300000, guid: 9f9afcd5a0a4c5b4f8ef0a6c2c54ddf1, type: 3}
   - {fileID: 21300000, guid: 611c9026153e8e74aa839ce7ebb2ed4d, type: 3}
+  - {fileID: 21300000, guid: ecebbe562879bdd4196ed5e50e1bf660, type: 3}
   - {fileID: 21300000, guid: f862fe566d343644a8ea58976eb5890d, type: 3}
   - {fileID: 21300000, guid: b4bb4d76fd0b2624899c6147c8d57160, type: 3}
   - {fileID: 21300000, guid: fb08f7867558e6a429f45ec2d7f8d10b, type: 3}
   - {fileID: 21300000, guid: 48cec3a66be7ebf4a938572ac99be815, type: 3}
   - {fileID: 21300000, guid: fe8a59b64960f8d4eaa3fcf76466bc95, type: 3}
+  - {fileID: 21300000, guid: e83637f6cf69f74438fcd02ce7fbc94a, type: 3}
   - {fileID: 4413142109597815103, guid: 29173af6ad4f8f34cae2f2ad028ec303, type: 3}
   - {fileID: -3674992999376901249, guid: 29173af6ad4f8f34cae2f2ad028ec303, type: 3}
   - {fileID: 4227826887867029099, guid: 29173af6ad4f8f34cae2f2ad028ec303, type: 3}
@@ -432,11 +443,15 @@ SpriteAtlas:
   - tallbox__bottom_tile
   - truck top down view-2.png 1
   - boxpile_triangle_4_tile
+  - road_3intersection_down_tile
+  - road_turn_upperleft_tile
+  - road_3intersection_left_tile
   - Button_upgrade_player
   - prop_flowerbox
   - bigbox_uppermiddle_tile
   - boxpile_circle_1_tile
   - bigbox_bottommiddle_tile
+  - road_horizontal_straight_tile_updated
   - truck top down view-2.png
   - boxpile_square_2_tile
   - player with a box ANIMATION (1)_3
@@ -450,6 +465,7 @@ SpriteAtlas:
   - Backdrop_youre_fired_withoutbox
   - background_initial_design_448x320px (1)
   - house_3_tile
+  - road_3intersection_up_tile
   - Backdrop_youre_fired_withbox
   - play button
   - improved player ANIMATION_1
@@ -461,6 +477,7 @@ SpriteAtlas:
   - Button_upgrade_fuel
   - bigbox_upperright_tile
   - background_warehouse_updated
+  - road_turn_bottomleft_tile
   - longbox_middle_tile
   - play button
   - improved player jump ANIMATION_1
@@ -468,11 +485,13 @@ SpriteAtlas:
   - improved player jump ANIMATION_3
   - improved player jump ANIMATION_2
   - improved player jump ANIMATION_4
+  - road_3intersection_right_tile
   - warehouse_outside_updated_tile
   - speedmeter_speed4
   - Button_upgrade_box
   - house_1_tile
   - itembox_square_tile
+  - road_4intersection_tile
   - shelves_left_tile
   - player jump ANIMATION_4
   - player jump ANIMATION_3
@@ -480,6 +499,7 @@ SpriteAtlas:
   - player jump ANIMATION_1
   - player jump ANIMATION_0
   - boxpile_circle_3_tile
+  - road_turn_upperright_tile
   - quit button 1
   - truck-1.png
   - idol animation final_2
@@ -491,11 +511,13 @@ SpriteAtlas:
   - knocked trash
   - tallbox_middle_tile
   - temp test pic
+  - road_virticle_straight_tile_updated
   - house_2_tile
   - cherry bush
   - backdrop_neighborhood_updated
   - player with a box-1.png
   - boxpile_square_1_tile
+  - road_turn_bottomright_tile
   - FlyingSlimeAttack_8
   - FlyingSlimeAttack_7
   - FlyingSlimeAttack_6
