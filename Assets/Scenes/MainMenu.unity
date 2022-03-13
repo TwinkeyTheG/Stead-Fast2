@@ -134,7 +134,7 @@ GameObject:
   - component: {fileID: 27171590}
   - component: {fileID: 27171591}
   m_Layer: 5
-  m_Name: Circle
+  m_Name: SteadFastLogo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -937,12 +937,12 @@ PrefabInstance:
     - target: {fileID: 7806682004418710101, guid: 54b01999deac29045ad5f8cb6a2b3a79,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.4545131
+      value: 0.5056458
       objectReference: {fileID: 0}
     - target: {fileID: 7806682004418710101, guid: 54b01999deac29045ad5f8cb6a2b3a79,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 1.5711832
+      value: 1.3354585
       objectReference: {fileID: 0}
     - target: {fileID: 7806682004418710101, guid: 54b01999deac29045ad5f8cb6a2b3a79,
         type: 3}
@@ -1129,12 +1129,12 @@ PrefabInstance:
     - target: {fileID: 8078156801103953283, guid: 615fca94e3b6ef04b90d5d3ed5c270b3,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.4619218
+      value: 0.5543062
       objectReference: {fileID: 0}
     - target: {fileID: 8078156801103953283, guid: 615fca94e3b6ef04b90d5d3ed5c270b3,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 1.7445111
+      value: 1.4391519
       objectReference: {fileID: 0}
     - target: {fileID: 8078156801103953283, guid: 615fca94e3b6ef04b90d5d3ed5c270b3,
         type: 3}
