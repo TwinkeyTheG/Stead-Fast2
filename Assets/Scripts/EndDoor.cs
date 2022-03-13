@@ -10,10 +10,10 @@ using UnityEngine.SceneManagement;
 
 public class EndDoor : MonoBehaviour
 {
-    public string LevelToLoad = "NeighborHood";
+    public string LevelToLoad = "Neighbor Hood";
     // Start is called before the first frame update
 
-    private void OnTriggerStay2D(Collision2D collision)
+    private void OnTriggerStay2D(Collider2D collision)
     {
         if(collision.gameObject.CompareTag("Player") && Input.GetKeyDown(KeyCode.F))
         {
