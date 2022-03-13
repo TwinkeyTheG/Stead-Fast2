@@ -12,11 +12,12 @@ public class TruckControlV2 : MonoBehaviour
 
     //Object to store GameManagerData in
     GameManager Data;
-
+    //UI that display the different gauges
+    public SpriteRenderer gas3, gas2, gas1;
     private Rigidbody2D rb;
     //Audio stuff
     private AudioSource myAud;
-    public AudioClip Crash;
+    public AudioClip Crash, accelerate;
     /*public AudioClip jumpNoises;
     public AudioClip dropBox1s;
     public AudioClip dropBox2s;
@@ -57,6 +58,13 @@ public class TruckControlV2 : MonoBehaviour
     }
     void FixedUpdate()
     {
+        //the rendering of the Gas meter and Speedometer on the player UI
+        /*switch(gas)
+        {
+            case <= 30.0:
+                gas1.
+
+        }*/
         //Vector3 move = new Vector3(hInput, vInput, 0);
         if (hInput != 0)
         {
@@ -173,7 +181,7 @@ public class TruckControlV2 : MonoBehaviour
         }
 
     }
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnCollisionEnter2D(Collider2D collision)
     {
         GameObject Destroyable = collision.gameObject;
         if(collision.gameObject.CompareTag("Bussin"))
