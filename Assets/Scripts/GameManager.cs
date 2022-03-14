@@ -29,15 +29,12 @@ public class GameManager : MonoBehaviour
     public int OrderNumber = 0;
     public bool displayOn;
     //structure for orders
-    public struct Orders
-    {
-        public int houseNum;
-        public int BoxTriNum;
-        public int BoxCircNum;
-        public int BoxRectNum;
-    }
-    // amount of orders is 6 for now
-    public Orders[] Type = new Orders[2];
+
+        public int houseNum = 0;
+        public int BoxTriNum = 0;
+        public int BoxCircNum = 0;
+        public int BoxRectNum = 0;
+
 
     public bool begin = true;
 
@@ -81,32 +78,32 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        displayOn = false;
-        if (begin == true)
-        {
-            //populate the array with 0 for each box type
-            for (int i = 0; i < 2; i++)
-            {
-                Type[i].houseNum = 0;
-                Type[i].BoxTriNum = 0;
-                Type[i].BoxCircNum = 0;
-                Type[i].BoxRectNum = 0;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                Type[i].houseNum = i + 1;
-                Type[i].BoxTriNum = Random.Range(0, 5);
-                Type[i].BoxCircNum = Random.Range(0, 5);
-                Type[i].BoxRectNum = Random.Range(0, 5);
-            }
-            begin = false;
-        }
-    }
+        houseNum = Random.Range(0, 5);
+        BoxTriNum = Random.Range(0, 5);
+        BoxCircNum = Random.Range(0, 5);
+        BoxRectNum = Random.Range(0, 5);
+    /*displayOn = false;
+    if (begin == true)
+    {
+        //populate the array with 0 for each box type
+
+            [0].houseNum = 0;
+            Type[0].BoxTriNum = 0;
+            Type[0].BoxCircNum = 0;
+            Type[0].BoxRectNum = 0;
+
+            Type[0].houseNum = 1;
+            Type[0].BoxTriNum = Random.Range(0, 5);
+            Type[0].BoxCircNum = Random.Range(0, 5);
+        Orders[0].BoxRectNum = Random.Range(0, 5);
+        begin = false;
+    }*/
+}
 
     // Update is called once per frame
     void Update()
     {
-        int Tri = Type[OrderNumber].BoxTriNum, Cir = Type[OrderNumber].BoxCircNum, Rect = Type[OrderNumber].BoxCircNum;
+        int Tri = BoxTriNum, Cir = BoxCircNum, Rect = BoxCircNum;
         //will check if order was complete
         if (Tri == 0 && Cir == 0 && Rect == 0)
         {
@@ -143,15 +140,22 @@ public class GameManager : MonoBehaviour
     //Updates the order information.
     public void OrderText()
     {
-        myOrder.text = "House: " + Type[OrderNumber].houseNum + "\n" +
-              "Circle Box(es): " + Type[OrderNumber].BoxCircNum + "\n" +
-               "Triangle Box(es): " + Type[OrderNumber].BoxTriNum + "\n" +
-               "Rectangle Box(es): " + Type[OrderNumber].BoxRectNum + "\n";
+        myOrder.text = "House: "  + houseNum + "\n" +
+              "Circle Box(es): "  + BoxCircNum + "\n" +
+               "Triangle Box(es): " +  BoxTriNum + "\n" +
+               "Rectangle Box(es): " + BoxRectNum + "\n";
     }
     //updates the text of the canvas of the player
     public void changeText()
     {
         OrderText();
         UpdateOrder.AddListener(OrderText);
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            displayOn = true;
+        }
     }
 }

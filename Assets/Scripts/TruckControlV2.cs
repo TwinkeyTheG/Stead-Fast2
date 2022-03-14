@@ -10,13 +10,13 @@ public class TruckControlV2 : MonoBehaviour
     //Object to store GameManagerData in
     GameManager Data;
     //UI that display the different gauges
-    public Canvas Gas1, Gas2, Gas3;
+    public Canvas Gas1, Gas2, Gas3,Speed1,Speed2,Speed3,Speed4,Speed5;
     //Gas the truck has
     public float gas = 70;
     private Rigidbody2D rb;
     //Audio stuff
     private AudioSource myAud;
-    public AudioClip Crash, accelerate;
+    public AudioClip Crash, accelerate, GasGlug;
     /*public AudioClip jumpNoises;
     public AudioClip dropBox1s;
     public AudioClip dropBox2s;
@@ -51,28 +51,74 @@ public class TruckControlV2 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //canvas for gas guage
         if (gas <= 0)
         {
+            myAud.PlayOneShot(GasGlug);
             SceneManager.LoadScene("LoseScreen");
+
         }
-        if (gas <= 30)
+        if (gas <= 30 && gas > 0)
         {
             Gas3.renderMode.Equals(false);
             Gas2.renderMode.Equals(false);
             Gas1.renderMode.Equals(true);
         }
-        else if(gas <= 50)
+        else if(gas <= 50 && gas > 30)
         {
             Gas1.renderMode.Equals(false);
             Gas3.renderMode.Equals(false);
             Gas2.renderMode.Equals(true);
         }
-        else if(gas <= 70)
+        else if(gas <= 70 && gas > 50)
         {
             Gas2.renderMode.Equals(false);
             Gas1.renderMode.Equals(false);
             Gas3.renderMode.Equals(true);
         }
+        //canvas for Speed guage
+        if(speed == 0)
+        {
+            Speed1.renderMode.Equals(true);
+            Speed2.renderMode.Equals(false);
+            Speed3.renderMode.Equals(false);
+            Speed4.renderMode.Equals(false);
+            Speed5.renderMode.Equals(false);
+        }
+        else if(speed <= 50 && speed > 0)
+        {
+            Speed1.renderMode.Equals(false);
+            Speed2.renderMode.Equals(true);
+            Speed3.renderMode.Equals(false);
+            Speed4.renderMode.Equals(false);
+            Speed5.renderMode.Equals(false);
+        }
+        else if (speed <= 100 && speed > 50)
+        {
+            Speed1.renderMode.Equals(false);
+            Speed2.renderMode.Equals(false);
+            Speed3.renderMode.Equals(true);
+            Speed4.renderMode.Equals(false);
+            Speed5.renderMode.Equals(false);
+        }
+        else if (speed <= 150 && speed > 100)
+        {
+            Speed1.renderMode.Equals(false);
+            Speed2.renderMode.Equals(false);
+            Speed3.renderMode.Equals(false);
+            Speed4.renderMode.Equals(true);
+            Speed5.renderMode.Equals(false);
+        }
+        else if (speed == 200)
+        {
+            Speed1.renderMode.Equals(false);
+            Speed2.renderMode.Equals(false);
+            Speed3.renderMode.Equals(false);
+            Speed4.renderMode.Equals(false);
+            Speed5.renderMode.Equals(true);
+        }
+
+
 
         ////////////////////////////////myAud.PlayOneShot(dropBox4);
         gas -= Time.deltaTime;
@@ -136,7 +182,7 @@ public class TruckControlV2 : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         //stores the specified order details into integer values
-        int TriBoxes = Data.Type[Data.OrderNumber].BoxTriNum, CircBoxes = Data.Type[Data.OrderNumber].BoxCircNum, RectBoxes = Data.Type[Data.OrderNumber].BoxRectNum;
+        int TriBoxes = Data.BoxTriNum, CircBoxes = Data.BoxCircNum, RectBoxes = Data.BoxRectNum;
         //keeps track of the remainder
         int Remainder = 0;
         if (collision.gameObject.layer == LayerMask.NameToLayer("House"))
@@ -144,23 +190,23 @@ public class TruckControlV2 : MonoBehaviour
             //int to compare the house number of the order to
             int Location = 0;
             int.TryParse(collision.gameObject.tag, out Location);
-            if(Location == Data.Type[Data.OrderNumber].houseNum)
+            if(Location == Data.houseNum)
             {
                 //checks if the truck has more boxes than required in the order.
                 if(Data.Triangles >= TriBoxes)
                 {
                     //first finds the remainder
-                    Remainder = Data.Triangles - Data.Type[Data.OrderNumber].BoxTriNum;
+                    Remainder = Data.Triangles - Data.BoxTriNum;
                     //then sets the remainder of the boxes to the amount in truck
                     Data.Triangles = Remainder;
                     //Finally elimnates the value from the order
-                    Data.Type[Data.OrderNumber].BoxTriNum = 0;
+                    Data.BoxTriNum = 0;
                 }
                 //otherwise, if the amount in order is higher than amount in truck then...
                 else
                 {
                     //Leaves the remaining amount in order details
-                    Data.Type[Data.OrderNumber].BoxTriNum -= Data.Triangles;
+                    Data.BoxTriNum -= Data.Triangles;
                     //then leaves 0 left in truck
                     Data.Triangles = 0;
                 }
@@ -168,17 +214,17 @@ public class TruckControlV2 : MonoBehaviour
                 if (Data.Circles >= CircBoxes)
                 {
                     //first finds the remainder
-                    Remainder = Data.Circles - Data.Type[Data.OrderNumber].BoxCircNum;
+                    Remainder = Data.Circles - Data.BoxCircNum;
                     //then sets the remainder of the boxes to the amount in truck
                     Data.Circles = Remainder;
                     //Finally elimnates the value from the order
-                    Data.Type[Data.OrderNumber].BoxCircNum = 0;
+                    Data.BoxCircNum = 0;
                 }
                 //otherwise, if the amount in order is higher than amount in truck then...
                 else
                 {
                     //Leaves the remaining amount in order details
-                    Data.Type[Data.OrderNumber].BoxCircNum -= Data.Circles;
+                    Data.BoxCircNum -= Data.Circles;
                     //then leaves 0 left in truck
                     Data.Circles = 0;
                 }
@@ -186,17 +232,17 @@ public class TruckControlV2 : MonoBehaviour
                 if (Data.Rectangles >= RectBoxes)
                 {
                     //first finds the remainder
-                    Remainder = Data.Rectangles - Data.Type[Data.OrderNumber].BoxRectNum;
+                    Remainder = Data.Rectangles - Data.BoxRectNum;
                     //then sets the remainder of the boxes to the amount in truck
                     Data.Rectangles = Remainder;
                     //Finally elimnates the value from the order
-                    Data.Type[Data.OrderNumber].BoxRectNum = 0;
+                    Data.BoxRectNum = 0;
                 }
                 //otherwise, if the amount in order is higher than amount in truck then...
                 else
                 {
                     //Leaves the remaining amount in order details
-                    Data.Type[Data.OrderNumber].BoxRectNum -= Data.Rectangles;
+                    Data.BoxRectNum -= Data.Rectangles;
                     //then leaves 0 left in truck
                     Data.Rectangles = 0;
                 }
