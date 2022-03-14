@@ -78,10 +78,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        houseNum = Random.Range(0, 5);
-        BoxTriNum = Random.Range(0, 5);
-        BoxCircNum = Random.Range(0, 5);
-        BoxRectNum = Random.Range(0, 5);
+        setOrder();
         //myOrder = GameObject.Find("OrdersUI").GetComponent<TMP_Text>();
         /*displayOn = false;
         if (begin == true)
@@ -104,22 +101,26 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        print(ShiftDur);
         int Tri = BoxTriNum, Cir = BoxCircNum, Rect = BoxCircNum;
         //will check if order was complete
         if (Tri == 0 && Cir == 0 && Rect == 0)
         {
             OrderNumber++;
+            if (SceneManager.GetActiveScene().name == "BaseLevel")
+            {
+                setOrder();
+            }
         }
-        /*if(ShiftDur <= 0 && CompletedOrders < 8)
+        if(ShiftDur <= 0 && CompletedOrders < 8)
+        {
+            SceneManager.LoadScene("LoseScene");
+        }
+        else if (ShiftDur <=0 && CompletedOrders >= 8)
         {
             SceneManager.LoadScene("Win");
-            Lost += 100;
         }
-        else
-        {
-            SceneManager.LoadScene("Win");
-        }
-        ShiftDur -= Time.deltaTime;*/
+        ShiftDur -= Time.deltaTime;
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             Application.Quit();
@@ -130,6 +131,13 @@ public class GameManager : MonoBehaviour
             CompletedOrders++;
         }*/
         changeText();
+    }
+    private void setOrder()
+    {
+        houseNum = Random.Range(1, 4);
+        BoxTriNum = Random.Range(0, 5);
+        BoxCircNum = Random.Range(0, 5);
+        BoxRectNum = Random.Range(0, 5);
     }
     public static void ResetGame()
     {

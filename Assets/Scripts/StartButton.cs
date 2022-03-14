@@ -14,17 +14,20 @@ public class StartButton : MonoBehaviour
     //name of the scene to load on button click
     public string LevelToLoad = "BaseLevel";
     // add this function to the button onclick in the editor
+    private void Start()
+    {
+        man = FindObjectOfType<GameManager>();
+    }
     public void LevelLoad()
     {
         SceneManager.LoadScene(LevelToLoad);
-        man.displayOn = false;
-        man.CompletedOrders = 0;
+        /*man.CompletedOrders = 0;
         man.Circles = 0;
         man.Triangles = 0;
         man.Rectangles = 0;
         man.ShiftDur = 720;
         man.ShiftDur = 720;
-        man.begin = true;
+        man.begin = true;*/
     }
 
     public void ResetData()

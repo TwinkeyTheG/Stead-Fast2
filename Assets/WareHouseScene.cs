@@ -22,7 +22,6 @@ public class WareHouseScene : MonoBehaviour
         if (collision.gameObject.CompareTag("Truck"))
         {
             SceneManager.LoadScene("BaseLevel");
-            Truck.gas = 70;
         }
     }
 }
