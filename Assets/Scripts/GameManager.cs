@@ -82,7 +82,7 @@ public class GameManager : MonoBehaviour
         BoxTriNum = Random.Range(0, 5);
         BoxCircNum = Random.Range(0, 5);
         BoxRectNum = Random.Range(0, 5);
-        //myOrder = GameObject.Find("OrdersUI");
+        //myOrder = GameObject.Find("OrdersUI").GetComponent<TMP_Text>();
         /*displayOn = false;
         if (begin == true)
         {
@@ -138,10 +138,22 @@ public class GameManager : MonoBehaviour
     //Updates the order information.
     public void OrderText()
     {
-        myOrder.text = "House: "  + houseNum + "\n" +
-              "Circle Boxes: "  + BoxCircNum + "\n" +
-               "Triangle Boxes: " +  BoxTriNum + "\n" +
-               "Rectangle Boxes: " + BoxRectNum + "\n";
+        if (myOrder == null)
+        {
+            GameObject go = GameObject.Find("OrdersUI");
+            if (go != null)
+            {
+                myOrder = go.GetComponent<TMP_Text>();
+            }
+           
+        }
+        if (myOrder != null)
+        {
+             myOrder.text = "House: " + houseNum + "\n" +
+                  "Circle Boxes: " + BoxCircNum + "\n" +
+                   "Triangle Boxes: " + BoxTriNum + "\n" +
+                   "Rectangle Boxes: " + BoxRectNum + "\n";
+        }
     }
     //updates the text of the canvas of the player
     public void changeText()
