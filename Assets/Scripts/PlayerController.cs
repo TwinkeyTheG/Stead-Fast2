@@ -362,13 +362,9 @@ public class PlayerController : MonoBehaviour
     //to update Order display when colliding with terminal
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Terminal"))
-        {
-            Data.displayOn = true;
-        }
         for(int i = 1; i <= 2; i++)
         {
-            if (collision.gameObject.CompareTag(i.ToString()) && i == Data.Type[Data.OrderNumber].houseNum)
+            if (collision.gameObject.CompareTag(i.ToString()) && i == Data.houseNum)
             {
 
             }
