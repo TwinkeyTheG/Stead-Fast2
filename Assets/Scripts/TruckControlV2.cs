@@ -44,6 +44,7 @@ public class TruckControlV2 : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         myAud = GetComponent<AudioSource>();
         myAnim = GetComponent<Animator>();
+        Data = FindObjectOfType<GameManager>();
         targetRotation = Quaternion.identity;
         gas = 70;
     }

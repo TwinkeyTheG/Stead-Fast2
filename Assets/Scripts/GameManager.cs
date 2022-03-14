@@ -82,23 +82,24 @@ public class GameManager : MonoBehaviour
         BoxTriNum = Random.Range(0, 5);
         BoxCircNum = Random.Range(0, 5);
         BoxRectNum = Random.Range(0, 5);
-    /*displayOn = false;
-    if (begin == true)
-    {
-        //populate the array with 0 for each box type
+        //myOrder = GameObject.Find("OrdersUI");
+        /*displayOn = false;
+        if (begin == true)
+        {
+            //populate the array with 0 for each box type
 
-            [0].houseNum = 0;
-            Type[0].BoxTriNum = 0;
-            Type[0].BoxCircNum = 0;
-            Type[0].BoxRectNum = 0;
+                [0].houseNum = 0;
+                Type[0].BoxTriNum = 0;
+                Type[0].BoxCircNum = 0;
+                Type[0].BoxRectNum = 0;
 
-            Type[0].houseNum = 1;
-            Type[0].BoxTriNum = Random.Range(0, 5);
-            Type[0].BoxCircNum = Random.Range(0, 5);
-        Orders[0].BoxRectNum = Random.Range(0, 5);
-        begin = false;
-    }*/
-}
+                Type[0].houseNum = 1;
+                Type[0].BoxTriNum = Random.Range(0, 5);
+                Type[0].BoxCircNum = Random.Range(0, 5);
+            Orders[0].BoxRectNum = Random.Range(0, 5);
+            begin = false;
+        }*/
+    }
 
     // Update is called once per frame
     void Update()
@@ -119,10 +120,6 @@ public class GameManager : MonoBehaviour
             SceneManager.LoadScene("Win");
         }
         ShiftDur -= Time.deltaTime;*/
-        while(displayOn == true)
-        {
-            changeText();
-        }
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             Application.Quit();
@@ -132,6 +129,7 @@ public class GameManager : MonoBehaviour
             PackageDelivered = true;
             CompletedOrders++;
         }*/
+        changeText();
     }
     public static void ResetGame()
     {
@@ -141,9 +139,9 @@ public class GameManager : MonoBehaviour
     public void OrderText()
     {
         myOrder.text = "House: "  + houseNum + "\n" +
-              "Circle Box(es): "  + BoxCircNum + "\n" +
-               "Triangle Box(es): " +  BoxTriNum + "\n" +
-               "Rectangle Box(es): " + BoxRectNum + "\n";
+              "Circle Boxes: "  + BoxCircNum + "\n" +
+               "Triangle Boxes: " +  BoxTriNum + "\n" +
+               "Rectangle Boxes: " + BoxRectNum + "\n";
     }
     //updates the text of the canvas of the player
     public void changeText()
