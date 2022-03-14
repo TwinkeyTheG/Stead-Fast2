@@ -17,22 +17,17 @@ public class GameManager : MonoBehaviour
     public int MoneyEarned = 0;
     //Amount Lost
     //public int Lost = 0;
-    //GameObjects for the other scripts
-    TruckControlV2 truck;
     //the amount of strikes you have
     //int strikes = 0;
     //Keepstrack of the time of day which is 12 mins per shift
     public float ShiftDur = 720;
-    //DeliverBox Variables
-    public bool PackageDelivered = false;
     //These variables hold the values of how many packages are on the truck
     public int Triangles = 0;
     public int Rectangles = 0;
     public int Circles = 0;
     //Order Data variables
-    public int OrderNumber = 1;
-    public static int customers = 8;
-    public bool displayOn = false;
+    public int OrderNumber = 0;
+    public bool displayOn;
     //structure for orders
     public struct Orders
     {
@@ -42,7 +37,7 @@ public class GameManager : MonoBehaviour
         public int BoxRectNum;
     }
     // amount of orders is 6 for now
-    public Orders[] Type = new Orders[customers];
+    public Orders[] Type = new Orders[2];
 
     public bool begin = true;
 
@@ -50,6 +45,7 @@ public class GameManager : MonoBehaviour
     public static UnityEvent UpdateOrder = new UnityEvent();
     public TMP_Text myOrder;
     //allow this component to be grabbed from anywhere and make sure only one exists
+    TruckControlV2 Truck;
     public static GameManager Instance;
     //event to listen to for the score change
     public static UnityEvent ScoreUpdate = new UnityEvent();
@@ -85,17 +81,18 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        displayOn = false;
         if (begin == true)
         {
             //populate the array with 0 for each box type
-            for (int i = 0; i < customers; i++)
+            for (int i = 0; i < 2; i++)
             {
                 Type[i].houseNum = 0;
                 Type[i].BoxTriNum = 0;
                 Type[i].BoxCircNum = 0;
                 Type[i].BoxRectNum = 0;
             }
-            for (int i = 0; i < customers; i++)
+            for (int i = 0; i < 2; i++)
             {
                 Type[i].houseNum = i + 1;
                 Type[i].BoxTriNum = Random.Range(0, 5);
@@ -109,24 +106,16 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        /*int Tri = Type[OrderNumber].BoxTriNum, Cir = Type[OrderNumber].BoxCircNum, Rect = Type[OrderNumber].BoxCircNum;
-        for (int i = 1; i < 4; i++)
+        int Tri = Type[OrderNumber].BoxTriNum, Cir = Type[OrderNumber].BoxCircNum, Rect = Type[OrderNumber].BoxCircNum;
+        //will check if order was complete
+        if (Tri == 0 && Cir == 0 && Rect == 0)
         {
-            if(Tri == 0 && Cir == 0 && Rect == 0)
-            {
-
-            }
+            OrderNumber++;
         }
-        if(strikes == 3)
+        if(Truck.gas <= 0)
         {
             SceneManager.LoadScene("LoseScreen");
         }
-        if(truck.gas <= 0)
-        {
-            SceneManager.LoadScene("Win");
-            strikes++;
-            ShiftDur = 720;
-        }*/
         /*if(ShiftDur <= 0 && CompletedOrders < 8)
         {
             SceneManager.LoadScene("Win");

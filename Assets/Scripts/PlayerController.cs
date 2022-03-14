@@ -165,17 +165,6 @@ public class PlayerController : MonoBehaviour
             myRb.velocity = (Vector2.up * jumpForce) + new Vector2(myRb.velocity.x, 0);
             jumpPressed = true;
         }
-        //will check if order was complete
-        if (Data.Type[Data.OrderNumber].BoxCircNum == 0 && Data.Type[Data.OrderNumber].BoxTriNum == 0 && Data.Type[Data.OrderNumber].BoxRectNum == 0)
-        {
-            print("Successfully delivered!");
-            Data.PackageDelivered = true;
-        }
-        if (Data.PackageDelivered == true)
-        {
-            Data.OrderNumber++;
-            Data.PackageDelivered = false;
-        }
     }
     // FixedUpdate is called once per physics frame
     void FixedUpdate()
@@ -373,21 +362,16 @@ public class PlayerController : MonoBehaviour
     //to update Order display when colliding with terminal
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.CompareTag("Terminal"))
+        if (collision.gameObject.CompareTag("Terminal"))
         {
             Data.displayOn = true;
         }
-        for(int i = 1; i <= GameManager.customers; i++)
+        for(int i = 1; i <= 2; i++)
         {
             if (collision.gameObject.CompareTag(i.ToString()) && i == Data.Type[Data.OrderNumber].houseNum)
             {
 
             }
-        }
-        //checks if the house has already recieved the sufficient amount of a box type and will return the message House Does Not need anymore of this box
-        if(Data.Type[Data.OrderNumber].BoxCircNum != 0 && Data.Type[Data.OrderNumber].BoxTriNum != 0 && Data.Type[Data.OrderNumber].BoxRectNum != 0)
-        {
-            print("House still needs other packages");
         }
         //keeps track of how many boxes will be delivered next.
         /*else

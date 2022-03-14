@@ -7,13 +7,13 @@ using TMPro;
 
 public class TruckControlV2 : MonoBehaviour
 {
-    //Gas the truck has
-    public float gas = 70;
 
     //Object to store GameManagerData in
     GameManager Data;
     //UI that display the different gauges
-    public SpriteRenderer gas3, gas2, gas1;
+    public Canvas Gas1, Gas2, Gas3;
+    //Gas the truck has
+    public float gas = 70;
     private Rigidbody2D rb;
     //Audio stuff
     private AudioSource myAud;
@@ -46,11 +46,31 @@ public class TruckControlV2 : MonoBehaviour
         myAud = GetComponent<AudioSource>();
         myAnim = GetComponent<Animator>();
         targetRotation = Quaternion.identity;
+        gas = 70;
     }
 
     // Update is called once per frame
     void Update()
     {
+        if(gas <= 30)
+        {
+            Gas3.renderMode.Equals(false);
+            Gas2.renderMode.Equals(false);
+            Gas1.renderMode.Equals(true);
+        }
+        else if(gas <= 50)
+        {
+            Gas1.renderMode.Equals(false);
+            Gas3.renderMode.Equals(false);
+            Gas2.renderMode.Equals(true);
+        }
+        else if(gas <= 70)
+        {
+            Gas2.renderMode.Equals(false);
+            Gas1.renderMode.Equals(false);
+            Gas3.renderMode.Equals(true);
+        }
+
         ////////////////////////////////myAud.PlayOneShot(dropBox4);
         gas -= Time.deltaTime;
         hInput = Input.GetAxis("Horizontal");
@@ -181,7 +201,7 @@ public class TruckControlV2 : MonoBehaviour
         }
 
     }
-    private void OnCollisionEnter2D(Collider2D collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
         GameObject Destroyable = collision.gameObject;
         if(collision.gameObject.CompareTag("Bussin"))

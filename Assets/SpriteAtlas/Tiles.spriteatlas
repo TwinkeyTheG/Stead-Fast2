@@ -44,7 +44,7 @@ SpriteAtlas:
     variantMultiplier: 1
     packables:
     - {fileID: 102900000, guid: 015970736cfa36e4c88054972bb3d2ba, type: 3}
-    totalSpriteSurfaceArea: 38314367
+    totalSpriteSurfaceArea: 38948367
     bindAsDefault: 1
     isAtlasV2: 0
     cachedData: {fileID: 0}
@@ -98,6 +98,8 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 8a3a98735fc1a844bb32a8a531bf28a1, type: 3}
   - {fileID: 21300000, guid: 421ee79333382c446bdd0ef2528f4f9d, type: 3}
   - {fileID: 21300000, guid: 19aa22a38e79c8241ae57ad0bc3b8e75, type: 3}
+  - {fileID: 7984896998085740546, guid: 312513b396cfff44f8535e671f8c1fba, type: 3}
+  - {fileID: -6998488413701582375, guid: 312513b396cfff44f8535e671f8c1fba, type: 3}
   - {fileID: -8799693141063424109, guid: 2b046eb3ab8924e40b7c26f88608da45, type: 3}
   - {fileID: 9114453285793144087, guid: 2b046eb3ab8924e40b7c26f88608da45, type: 3}
   - {fileID: -871970863703263856, guid: 2b046eb3ab8924e40b7c26f88608da45, type: 3}
@@ -415,6 +417,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: d1f73d2e884616948b477768e018300a, type: 3}
   - {fileID: 21300000, guid: 6597444ee9c2b4f49bbdebf9f58aba43, type: 3}
   - {fileID: 21300000, guid: 8fdabd5ecedd2f34fa81c62677341d7f, type: 3}
+  - {fileID: 21300000, guid: 36a8186ea8bcfe54489bb430f6612af9, type: 3}
   - {fileID: 21300000, guid: e32f418e8f6d571479855abe0827eb60, type: 3}
   - {fileID: 21300000, guid: 0dd2198e208562c4c9c8b35a03094aa7, type: 3}
   - {fileID: 8142741152169946802, guid: 1ed7e1fe5a7623247972878d367d5a18, type: 3}
@@ -480,6 +483,8 @@ SpriteAtlas:
   - road_turn_bottomleft_tile
   - longbox_middle_tile
   - play button
+  - still truck _1
+  - still truck _0
   - improved player jump ANIMATION_1
   - improved player jump ANIMATION_0
   - improved player jump ANIMATION_3
@@ -797,6 +802,7 @@ SpriteAtlas:
   - road_left_3intersection_tile
   - Backdrop_winscreen
   - itembox_triangle_tile
+  - truck top down view 1
   - boxpile_circle_4_tile
   - boxpile_tirangle_2_tile
   - player with a box jumping animation _5
