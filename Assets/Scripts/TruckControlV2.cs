@@ -6,8 +6,7 @@ using UnityEngine.Events;
 using TMPro;
 
 public class TruckControlV2 : MonoBehaviour
-{
-
+{ 
     //Object to store GameManagerData in
     GameManager Data;
     //UI that display the different gauges
@@ -52,7 +51,11 @@ public class TruckControlV2 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(gas <= 30)
+        if (gas <= 0)
+        {
+            SceneManager.LoadScene("LoseScreen");
+        }
+        if (gas <= 30)
         {
             Gas3.renderMode.Equals(false);
             Gas2.renderMode.Equals(false);

@@ -112,10 +112,6 @@ public class GameManager : MonoBehaviour
         {
             OrderNumber++;
         }
-        if(Truck.gas <= 0)
-        {
-            SceneManager.LoadScene("LoseScreen");
-        }
         /*if(ShiftDur <= 0 && CompletedOrders < 8)
         {
             SceneManager.LoadScene("Win");
