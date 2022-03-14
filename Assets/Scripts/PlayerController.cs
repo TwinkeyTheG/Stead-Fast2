@@ -89,6 +89,9 @@ public class PlayerController : MonoBehaviour
     private bool IsTri = false;
     private bool IsRect = false;
     private bool IsCirc = false;
+    private Vector3 PickTriPos;
+    private Vector3 PickCircPos;
+    private Vector3 PickRectPos;
     private bool InstantiationNeed = true;
     private Vector3 CurrentPos = new Vector3();
 
@@ -101,6 +104,9 @@ public class PlayerController : MonoBehaviour
         myAnim = GetComponent<Animator>();
         jumps = extraJumps;
         RespawnPoint = transform.position;
+        PickTriPos = TrianglePos;
+        PickRectPos = RectanglePos;
+        PickCircPos = CirclePos;
     }
 
     //Update is called once per frame
@@ -251,20 +257,29 @@ public class PlayerController : MonoBehaviour
         if (IsTri == false)
         {
             IsTri = true;
-            Instantiate(Triangle, TrianglePos, Quaternion.identity);
-            myAud.PlayOneShot(dropBox1);
+            if (PickTriPos == TrianglePos)
+            {
+                Instantiate(Triangle, TrianglePos, Quaternion.identity);
+                myAud.PlayOneShot(dropBox1);
+            }
         }
         if (IsCirc == false)
         {
             IsCirc = true;
-            Instantiate(Circle, CirclePos, Quaternion.identity);
-            myAud.PlayOneShot(dropBox2);
+            if (PickCircPos == CirclePos)
+            {
+                Instantiate(Circle, CirclePos, Quaternion.identity);
+                myAud.PlayOneShot(dropBox2);
+            }
         }
         if (IsRect == false)
         {
             IsRect = true;
-            Instantiate(Rectangle, RectanglePos, Quaternion.identity);
-            myAud.PlayOneShot(dropBox3);
+            if (PickRectPos == RectanglePos)
+            {
+                Instantiate(Rectangle, RectanglePos, Quaternion.identity);
+                myAud.PlayOneShot(dropBox3);
+            }
         }
     }
 
@@ -309,6 +324,7 @@ public class PlayerController : MonoBehaviour
                     myAnim.SetBool("HasBox", true);
                     HasBox = true;
                     myAud.PlayOneShot(boxPickup1);
+                    PickTriPos = Box.transform.position;
                     InstantiationNeed = true;
                     IsTri = false;
                 }
@@ -320,6 +336,7 @@ public class PlayerController : MonoBehaviour
                     myAnim.SetBool("HasBox", true);
                     HasBox = true;
                     myAud.PlayOneShot(boxPickup1);
+                    PickRectPos = Box.transform.position;
                     InstantiationNeed = true;
                     IsRect = false;
                 }
@@ -331,6 +348,7 @@ public class PlayerController : MonoBehaviour
                     myAnim.SetBool("HasBox", true);
                     HasBox = true;
                     myAud.PlayOneShot(boxPickup2);
+                    PickCircPos = Box.transform.position;
                     InstantiationNeed = true;
                     IsCirc = false;
                 }
