@@ -26,7 +26,6 @@ public class StartButton : MonoBehaviour
         man.Triangles = 0;
         man.Rectangles = 0;
         man.ShiftDur = 720;
-        man.ShiftDur = 720;
         man.begin = true;*/
     }
 

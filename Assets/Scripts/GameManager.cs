@@ -101,7 +101,7 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        print(ShiftDur);
+        //print(ShiftDur);
         int Tri = BoxTriNum, Cir = BoxCircNum, Rect = BoxCircNum;
         //will check if order was complete
         if (Tri == 0 && Cir == 0 && Rect == 0)
@@ -114,11 +114,23 @@ public class GameManager : MonoBehaviour
         }
         if(ShiftDur <= 0 && CompletedOrders < 8)
         {
-            SceneManager.LoadScene("LoseScene");
+            SceneManager.LoadScene("LoseScreen");
+            CompletedOrders = 0;
+            Circles = 0;
+            Triangles = 0;
+            Rectangles = 0;
+            ShiftDur = 720;
+            begin = true;
         }
         else if (ShiftDur <=0 && CompletedOrders >= 8)
         {
             SceneManager.LoadScene("Win");
+            CompletedOrders = 0;
+            Circles = 0;
+            Triangles = 0;
+            Rectangles = 0;
+            ShiftDur = 720;
+            begin = true;
         }
         ShiftDur -= Time.deltaTime;
         if (Input.GetKeyDown(KeyCode.Escape))
