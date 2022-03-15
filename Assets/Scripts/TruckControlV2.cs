@@ -61,21 +61,21 @@ public class TruckControlV2 : MonoBehaviour
         }
         if (gas <= 30 && gas > 0)
         {
-            Gas3.renderMode.Equals(false);
-            Gas2.renderMode.Equals(false);
-            Gas1.renderMode.Equals(true);
+            Gas3.enabled = false;
+            Gas2.enabled = false;
+            Gas1.enabled = true;
         }
         else if(gas <= 50 && gas > 30)
         {
-            Gas1.renderMode.Equals(false);
-            Gas3.renderMode.Equals(false);
-            Gas2.renderMode.Equals(true);
+            Gas1.enabled = false;
+            Gas3.enabled = false;
+            Gas2.enabled = true;
         }
         else if(gas <= 70 && gas > 50)
         {
-            Gas2.renderMode.Equals(false);
-            Gas1.renderMode.Equals(false);
-            Gas3.renderMode.Equals(true);
+            Gas2.enabled = false;
+            Gas1.enabled = false;
+            Gas3.enabled = true;
         }
         //canvas for Speed guage
         if(speed == 0)

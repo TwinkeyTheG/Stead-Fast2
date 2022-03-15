@@ -28,11 +28,19 @@ public class SignReading : MonoBehaviour
         {
             Text.SetActive(true);
         }
+        if (collision.gameObject.CompareTag("Truck"))
+        {
+            Text.SetActive(true);
+        }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
+        {
+            Text.SetActive(false);
+        }
+        if (collision.gameObject.CompareTag("Truck"))
         {
             Text.SetActive(false);
         }
