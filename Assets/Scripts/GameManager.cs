@@ -106,42 +106,36 @@ public class GameManager : MonoBehaviour
         //will check if order was complete
         if (Tri == 0 && Cir == 0 && Rect == 0)
         {
-            OrderNumber++;
+            int order = CompletedOrders + 1;
             if (SceneManager.GetActiveScene().name == "BaseLevel")
             {
                 setOrder();
+                OrderNumber = order + 1;
+                CompletedOrders = order;
             }
+        }
+        if (ShiftDur <= -1 && SceneManager.GetActiveScene().name == "BaseLevel")
+        {
+            CompletedOrders = 0;
+            Circles = 0;
+            Triangles = 0;
+            Rectangles = 0;
+            ShiftDur = 720;
+            begin = true;
         }
         if(ShiftDur <= 0 && CompletedOrders < 8)
         {
             SceneManager.LoadScene("LoseScreen");
-            CompletedOrders = 0;
-            Circles = 0;
-            Triangles = 0;
-            Rectangles = 0;
-            ShiftDur = 720;
-            begin = true;
         }
         else if (ShiftDur <=0 && CompletedOrders >= 8)
         {
             SceneManager.LoadScene("Win");
-            CompletedOrders = 0;
-            Circles = 0;
-            Triangles = 0;
-            Rectangles = 0;
-            ShiftDur = 720;
-            begin = true;
         }
         ShiftDur -= Time.deltaTime;
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             Application.Quit();
         }
-        /*if(Tri == 0 && Cir == 0 && Rect == 0)
-        {
-            PackageDelivered = true;
-            CompletedOrders++;
-        }*/
         changeText();
     }
     private void setOrder()
