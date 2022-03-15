@@ -33,6 +33,7 @@ public class TruckControlV2 : MonoBehaviour
     private float hInput = 0.0f;
     private float vInput = 0.0f;
 
+    //public double Speed;
     public float speed = 200.0f;
     public float turnRate = 3.0f;
 
@@ -52,6 +53,7 @@ public class TruckControlV2 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         //canvas for gas guage
         if (gas <= 0)
         {
@@ -80,19 +82,19 @@ public class TruckControlV2 : MonoBehaviour
         //canvas for Speed guage
         if(speed == 0)
         {
-            Speed1.renderMode.Equals(true);
-            Speed2.renderMode.Equals(false);
-            Speed3.renderMode.Equals(false);
-            Speed4.renderMode.Equals(false);
-            Speed5.renderMode.Equals(false);
+            Speed1.enabled = true;
+            Speed2.enabled = false;
+            Speed3.enabled = false;
+            Speed4.enabled = false;
+            Speed5.enabled = false;
         }
         else if(speed <= 50 && speed > 0)
         {
-            Speed1.renderMode.Equals(false);
-            Speed2.renderMode.Equals(true);
-            Speed3.renderMode.Equals(false);
-            Speed4.renderMode.Equals(false);
-            Speed5.renderMode.Equals(false);
+            Speed1.enabled = false;
+            Speed2.enabled = true;
+            Speed3.enabled = false;
+            Speed4.enabled = false;
+            Speed5.enabled = false;
         }
         else if (speed <= 100 && speed > 50)
         {
@@ -128,13 +130,9 @@ public class TruckControlV2 : MonoBehaviour
     }
     void FixedUpdate()
     {
-        //the rendering of the Gas meter and Speedometer on the player UI
-        /*switch(gas)
-        {
-            case <= 30.0:
-                gas1.
+            /*Speed = Vector3.Distance(transform.position,transform.position) * 100f;
+            Debug.Log("Speed: " + speed.ToString("F2"));*/
 
-        }*/
         //Vector3 move = new Vector3(hInput, vInput, 0);
         if (hInput != 0)
         {
